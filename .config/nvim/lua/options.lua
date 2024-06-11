@@ -16,4 +16,3 @@ vim.opt.smartindent = true             -- Копировать отступ на
 vim.opt.cindent = true                 -- Автоотступы
 vim.opt.smarttab = true                -- Tab перед строкой вставит shiftwidht количество табов
 
-vim.g.ale_enable = 1 -- Вы можете включить ALE

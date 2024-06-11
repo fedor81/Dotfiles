@@ -13,6 +13,38 @@ return {
       require "configs.lspconfig"
     end,
   },
+  -- Подстветка синтаксиса
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "python",
+      },
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "prettier",
+        "pyright",
+        "mypy",
+        "ruff",
+        "black",
+        "debugpy",
+        "emmet-language-server",
+      },
+    },
+  },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -22,9 +54,11 @@ return {
     cmd = "ASToggle", -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
   },
+  -- Debbuger
   {
     "mfussenegger/nvim-dap",
   },
+  -- Tests
   {
     "nvim-neotest/nvim-nio",
   },
@@ -61,10 +95,12 @@ return {
       end
     end,
   },
+  -- html и css генератор
   {
     "olrtg/nvim-emmet",
     config = function() end,
   },
+  -- Оборачивает содержимое
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -76,26 +112,7 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "pyright",
-        "mypy",
-        "ruff",
-        "black",
-        "debugpy",
-        "emmet-language-server",
-      },
-    },
-  },
-  {
     "dense-analysis/ale",
-    lazy = false,
     config = function()
       local g = vim.g
       g.ale_linters = {
@@ -117,39 +134,40 @@ return {
     config = function()
       require("nvim-ts-autotag").setup()
     end,
-    ft = { "html", "xml" }, -- Загрузка плагина только для этих типов файлов
+    ft = { "html", "xml" },
   },
-  -- Подстветка синтаксиса
+  -- Подсказки при написании функции
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "python",
-      },
-      highlight = {
-        enable = true,
-      },
-    },
+    "folke/neodev.nvim",
+    opts = {},
   },
-  -- { -- GitHub Copilot только нужно перебиндить tab
-  --   "github/copilot.vim",
-  --   lazy = false,
-  --   config = function()  -- Mapping tab is already used by NvChad
-  --     vim.g.copilot_no_tab_map = true;
-  --     vim.g.copilot_assume_mapped = true;
-  --     vim.g.copilot_tab_fallback = "";
-  --   -- The mapping is set to other key, see custom/lua/mappings
-  --   -- or run <leader>ch to see copilot mapping section
-  --   end
-  -- },
-  { -- GitHub Copilot Chat
+  -- Быстрое перемещение
+  {
+    "ggandor/leap.nvim",
+    keys = {
+      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+    },
+    config = function()
+      local leap = require "leap"
+      leap.add_default_mappings(true)
+    end,
+  },
+  -- Quickfix
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+  },
+  -- Нейросеть
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+  },
+  -- GitHub Copilot Chat
+  {
     "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
+    event = "VeryLazy",
     branch = "canary",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
@@ -160,3 +178,26 @@ return {
     },
   },
 }
+-- Dashboard если вдруг понадобится
+-- {
+--   'nvimdev/dashboard-nvim',
+--   event = 'VimEnter',
+--   config = function()
+--     require('dashboard').setup {
+--       -- config
+--     }
+--   end,
+--   dependencies = { {'nvim-tree/nvim-web-devicons'}}
+-- },
+-- GitHub Copilot только нужно перебиндить tab
+-- {
+--   "github/copilot.vim",
+--   lazy = false,
+--   config = function() -- Mapping tab is already used by NvChad
+--     vim.g.copilot_no_tab_map = true
+--     vim.g.copilot_assume_mapped = true
+--     vim.g.copilot_tab_fallback = ""
+--     -- The mapping is set to other key, see custom/lua/mappings
+--     -- or run <leader>ch to see copilot mapping section
+--   end,
+-- },
