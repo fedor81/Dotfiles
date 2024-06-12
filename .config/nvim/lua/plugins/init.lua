@@ -46,8 +46,16 @@ return {
     },
   },
   {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
   },
   {
     "okuuva/auto-save.nvim",
@@ -113,6 +121,7 @@ return {
   },
   {
     "dense-analysis/ale",
+    event = "BufRead",
     config = function()
       local g = vim.g
       g.ale_linters = {
@@ -163,6 +172,21 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set("i", "<C-g>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<c-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<c-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<c-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true, silent = true })
+    end,
   },
   -- GitHub Copilot Chat
   {

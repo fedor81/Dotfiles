@@ -1,0 +1,12 @@
+tmux
+neovim
+eza
+yazi
+ffmpegthumbnailer
+unarchiver
+jq
+poppler
+fd
+ripgrep
+fzf
+zoxide
