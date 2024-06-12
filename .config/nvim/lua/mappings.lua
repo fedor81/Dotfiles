@@ -2,13 +2,13 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
 
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Emmet
@@ -34,6 +34,28 @@ end, { desc = "Step Over" })
 map("n", "<Leader>dpr", function()
   require("dap-python").test_method()
 end, { desc = "Debug Python Run" })
+
+-- Trouble
+map("n", "<leader>qx", "<cmd>TroubleToggle<CR>", { desc = "Open Trouble" })
+map("n", "<leader>qw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = "Open Workspace Trouble" })
+map("n", "<leader>qd", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = "Open Document Trouble" })
+map("n", "<leader>qq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open Quickfix" })
+map("n", "<leader>ql", "<cmd>TroubleToggle loclist<CR>", { desc = "Open Location List" })
+map("n", "<leader>qt", "<cmd>TodoTrouble<CR>", { desc = "Open Todo Trouble" })
+
+-- Codeium
+-- map("i", "<C-g>", function()
+--   return vim.fn["codeium#Accept"]()
+-- end, { expr = true, silent = true })
+-- map("i", "<c-;>", function()
+--   return vim.fn["codeium#CycleCompletions"](1)
+-- end, { expr = true, silent = true })
+-- map("i", "<c-,>", function()
+--   return vim.fn["codeium#CycleCompletions"](-1)
+-- end, { expr = true, silent = true })
+-- map("i", "<c-x>", function()
+--   return vim.fn["codeium#Clear"]()
+-- end, { expr = true, silent = true })
 
 -- Важная настройка
 map("n", "<Left>", ":echo 'Use h'<CR>")
