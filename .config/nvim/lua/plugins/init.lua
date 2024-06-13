@@ -86,6 +86,31 @@ return {
     opts = {},
   },
   {
+    "lukas-reineke/virt-column.nvim",
+    event = "BufRead",
+    opts = {},
+    config = function()
+      require("virt-column").setup()
+    end,
+  },
+  {
+    "m4xshen/smartcolumn.nvim",
+    event = "BufRead",
+    opts = {
+      disabled_filetypes = {
+        "netrw",
+        "NvimTree",
+        "Lazy",
+        "mason",
+        "help",
+        "text",
+        "markdown",
+        "tex",
+        "html",
+      },
+    },
+  },
+  {
     "okuuva/auto-save.nvim",
     cmd = "ASToggle", -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
