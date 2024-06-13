@@ -1,4 +1,4 @@
--- EXAMPLE 
+-- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -23,17 +23,17 @@ lspconfig.tsserver.setup {
 }
 
 lspconfig.pyright.setup {
-    settings = {
-      pyright = {
-        disableOrganizeImports = true, -- Using Ruff
-      },
-      python = {
-        analysis = {
-          ignore = { '*' }, -- Using Ruff
-          typeCheckingMode = 'off', -- Using mypy
-        },
+  settings = {
+    pyright = {
+      disableOrganizeImports = true, -- Using Ruff
+    },
+    python = {
+      analysis = {
+        ignore = { "*" }, -- Using Ruff
+        typeCheckingMode = "off", -- Using mypy
       },
     },
+  },
 }
 
 lspconfig.ruff_lsp.setup {
@@ -41,12 +41,23 @@ lspconfig.ruff_lsp.setup {
     settings = {
       -- Any extra CLI arguments for `ruff` go here.
       args = {},
-    }
-  }
+    },
+  },
 }
 
-lspconfig.emmet_language_server.setup({
-  filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+lspconfig.emmet_language_server.setup {
+  filetypes = {
+    "css",
+    "eruby",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "less",
+    "sass",
+    "scss",
+    "pug",
+    "typescriptreact",
+  },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.
   init_options = {
@@ -69,4 +80,4 @@ lspconfig.emmet_language_server.setup({
     --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
   },
-})
+}

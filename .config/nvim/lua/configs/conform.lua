@@ -3,6 +3,8 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    htmldjango = { "djlint" },
+    python = { "black" },
   },
 
   format_on_save = {

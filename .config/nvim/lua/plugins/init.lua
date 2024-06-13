@@ -42,6 +42,7 @@ return {
         "black",
         "debugpy",
         "emmet-language-server",
+        "djlint",
       },
     },
   },
@@ -155,12 +156,12 @@ return {
         python = { "mypy" },
         lua = { "lua_language_server" },
       }
-      g.ale_fixers = {
-        ["*"] = { "prettier" },
-        python = { "black" },
-        lua = { "stylua" },
-      }
-      g.ale_fix_on_save = 1
+      -- Для форматировния используется conform
+      -- g.ale_fixers = {
+      --   ["*"] = { "prettier" },
+      --   python = { "black" },
+      -- }
+      -- g.ale_fix_on_save = 1
     end,
   },
   -- Автозакрытие тегов
