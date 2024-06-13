@@ -19,5 +19,8 @@ install_package() {
 # Установка плагинов из plugins.txt
 while IFS= read -r plugin
 do
+   if [[ $plugin == \#* ]]; then
+      continue
+   fi
    install_package $plugin
 done < plugins.txt

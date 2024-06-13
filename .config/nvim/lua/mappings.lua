@@ -2,14 +2,13 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+-- map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
-
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Emmet
 map({ "n", "v" }, "<leader>xe", function()
@@ -56,6 +55,10 @@ map("n", "<leader>qt", "<cmd>TodoTrouble<CR>", { desc = "Open Todo Trouble" })
 -- map("i", "<c-x>", function()
 --   return vim.fn["codeium#Clear"]()
 -- end, { expr = true, silent = true })
+
+-- Telescope
+map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Zoxide" })
+map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 
 -- Важная настройка
 map("n", "<Left>", ":echo 'Use h'<CR>")
