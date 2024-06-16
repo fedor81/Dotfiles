@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
@@ -24,6 +24,7 @@ return {
         "html",
         "css",
         "python",
+        "javascript",
       },
     },
   },
@@ -43,6 +44,7 @@ return {
         "debugpy",
         "emmet-language-server",
         "djlint",
+        "typescript-language-server",
       },
     },
   },
@@ -80,6 +82,13 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
+    "smjonas/inc-rename.nvim",
+    event = "BufRead",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
+  {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -114,7 +123,20 @@ return {
     "okuuva/auto-save.nvim",
     cmd = "ASToggle", -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+    opts = {
+      execution_message = {
+        enabled = false,
+      },
+    },
   },
+  -- {
+  --   "Pocco81/auto-save.nvim",
+  --   event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+  --   cmd = "ASToggle", -- optional for lazy loading on command
+  --   config = function()
+  --     require("auto-save").setup {}
+  --   end,
+  -- },
   -- Debbuger
   {
     "mfussenegger/nvim-dap",

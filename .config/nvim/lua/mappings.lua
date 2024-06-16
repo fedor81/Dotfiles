@@ -42,6 +42,9 @@ map("n", "<leader>qq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open Quickfi
 map("n", "<leader>ql", "<cmd>TroubleToggle loclist<CR>", { desc = "Open Location List" })
 map("n", "<leader>qt", "<cmd>TodoTrouble<CR>", { desc = "Open Todo Trouble" })
 
+-- Rename
+map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
+
 -- Codeium
 -- map("i", "<C-g>", function()
 --   return vim.fn["codeium#Accept"]()
