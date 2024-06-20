@@ -11,3 +11,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Синхронизация плагинов nvim
 nvim --headless +"Lazy! sync" +qa
+nvim --headless "+MasonUpdate" +qa

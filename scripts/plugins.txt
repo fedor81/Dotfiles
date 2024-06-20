@@ -3,6 +3,7 @@
 tmux
 neovim
 eza
+thefuck
 
 # Следующие плагины нужны для поддержки eza
 yazi

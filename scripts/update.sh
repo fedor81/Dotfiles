@@ -9,3 +9,4 @@ source plugins-install.sh
  
 # Синхронизация плагинов nvim
 nvim --headless +"Lazy! sync" +qa
+nvim --headless "+MasonUpdate" +qa
