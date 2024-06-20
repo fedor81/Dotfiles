@@ -6,6 +6,7 @@ local options = {
     htmldjango = { "djlint" },
     python = { "black" },
     cpp = { "clang-format" },
+    -- sh = { "beautysh" }, -- Не работает
   },
 
   format_on_save = {
