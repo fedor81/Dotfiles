@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     htmldjango = { "djlint" },
     python = { "black" },
+    cpp = { "clang-format" },
   },
 
   format_on_save = {

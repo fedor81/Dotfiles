@@ -25,6 +25,7 @@ return {
         "css",
         "python",
         "javascript",
+        "cpp",
       },
     },
   },
@@ -37,14 +38,19 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "emmet-language-server",
+        "typescript-language-server", -- JavaScript
+        -- Python
         "pyright",
         "mypy",
         "ruff",
         "black",
         "debugpy",
-        "emmet-language-server",
-        "djlint",
-        "typescript-language-server",
+        "djlint", -- Django
+        -- C++
+        "clangd",
+        "clang-format",
+        "codelldb",
       },
     },
   },
@@ -137,13 +143,25 @@ return {
   --     require("auto-save").setup {}
   --   end,
   -- },
+  -- Tests
+  {
+    "nvim-neotest/nvim-nio",
+  },
   -- Debbuger
   {
     "mfussenegger/nvim-dap",
   },
-  -- Tests
   {
-    "nvim-neotest/nvim-nio",
+    "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      handlers = {},
+      ensure_installed = { "codelldb" },
+    },
   },
   {
     "mfussenegger/nvim-dap-python",

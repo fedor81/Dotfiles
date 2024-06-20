@@ -118,3 +118,6 @@ function yy() {
 
 # Вместо cd - Zoxide
 eval "$(zoxide init zsh)"
+
+# Исправление неправильно написанных команд
+eval $(thefuck --alias)
