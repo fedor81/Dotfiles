@@ -33,6 +33,10 @@ PACKAGES=(
     ripgrep
     fzf
     zoxide
+
+    # Для c++
+    llvm
+    cppcheck
 )
 
 # Определение os и установщика пакетов

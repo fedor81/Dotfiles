@@ -1,0 +1,31 @@
+" Causes problems with some mappings
+"source ~/.vim/vimrc
+
+let mapleader=" "
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" turn relative line numbers on
+:set relativenumber
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" Mappings
+map <leader>ds <Action>(Debug)
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>rn <Action>(RenameElement)
+
+" Exit to normal mode with 'jj'
+inoremap jj <ESC>
+
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>

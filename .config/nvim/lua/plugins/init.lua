@@ -220,6 +220,7 @@ return {
       g.ale_linters = {
         python = { "mypy" },
         lua = { "lua_language_server" },
+        cpp = { "clangd", "cppcheck", "cpplint", "clangtidy" },
       }
       -- Для форматировния используется conform
       -- g.ale_fixers = {
@@ -260,6 +261,10 @@ return {
   {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
+  },
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
   },
   -- Нейросеть
   {
