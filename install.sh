@@ -57,6 +57,13 @@ do
     $INSTALLER $PACKAGE
 done
 
+echo "Установка zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "Установка zsh-completions"
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
+echo "Установка Rust"
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 echo "Установка менеджера плагинов tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

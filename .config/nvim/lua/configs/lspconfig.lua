@@ -1,4 +1,3 @@
--- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -64,6 +63,20 @@ lspconfig.emmet_language_server.setup {
     "scss",
     "pug",
     "typescriptreact",
+  },
+
+  lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "rust" },
+    root_dir = lspconfig.util.root_pattern "Cargo.toml",
+    settings = {
+      ["rust_analyzer"] = {
+        cargo = {
+          allFeautures = true,
+        },
+      },
+    },
   },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.

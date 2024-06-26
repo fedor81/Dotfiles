@@ -16,9 +16,6 @@ map({ "n", "v" }, "<leader>xe", function()
 end, { desc = "Open Emmet" })
 
 -- Debug
-map("n", "<leader>du", function()
-  require("dapui").toggle()
-end, { desc = "Toggle Debug UI" })
 map("n", "<leader>db", function()
   require("dap").toggle_breakpoint()
 end, { desc = "Toggle Breakpoint" })
@@ -28,6 +25,14 @@ end, { desc = "Start" })
 map("n", "<leader>dn", function()
   require("dap").step_over()
 end, { desc = "Step Over" })
+map("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "Toggle Debug UI" })
+map("n", "<leader>dus", function()
+  local widgets = require "dap.ui.widgets"
+  local sidebar = widgets.sidebar(widgets.scopes)
+  sidebar.open()
+end, { desc = "Open debugging sidebar" })
 
 -- Debug Python
 map("n", "<Leader>dpr", function()

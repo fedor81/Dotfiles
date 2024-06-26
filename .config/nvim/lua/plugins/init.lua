@@ -26,6 +26,8 @@ return {
         "python",
         "javascript",
         "cpp",
+        "rust",
+        "toml",
       },
     },
   },
@@ -51,6 +53,8 @@ return {
         "clangd",
         "clang-format",
         "codelldb",
+        -- Rust
+        "rust-analyzer",
       },
     },
   },
@@ -194,6 +198,13 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
+    end,
+  },
+  { -- Crates для Rust
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require("crates").setup()
     end,
   },
   -- html и css генератор

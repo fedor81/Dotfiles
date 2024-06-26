@@ -12,6 +12,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "9a06e83527407a7600a2fe4e0d10adf432b6215e" },
   "copilot.lua": { "branch": "master", "commit": "86537b286f18783f8b67bccd78a4ef4345679625" },
+  "crates.nvim": { "branch": "main", "commit": "eecd13449945ee2c064e00c618dfec9b2d856ea3" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
   "gitsigns.nvim": { "branch": "main", "commit": "8df63f2ddc615feb71fd4aee45a4cee022876df1" },
   "inc-rename.nvim": { "branch": "main", "commit": "535b508c0cb14d00c1836ad901b3c531cb1152bb" },
