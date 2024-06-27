@@ -2,13 +2,22 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
--- map("n", ";", ":", { desc = "CMD enter command mode" })
+
+-- Русская раскладка
+map("i", "оо", "<ESC>")
+map("n", "ш", "i")
+map("n", "р", "h")
+map("n", "о", "j")
+map("n", "л", "k")
+map("n", "д", "l")
+map("n", "ч", "x")
+map("n", "ц", "w")
+map("n", "и", "b")
 
 -- Emmet
 map({ "n", "v" }, "<leader>xe", function()
