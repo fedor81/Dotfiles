@@ -20,6 +20,7 @@ PACKAGES=(
     neovim
     eza
     thefuck
+    alacritty
 
     yazi
     # Следующие плагины нужны для поддержки yazi
@@ -61,6 +62,10 @@ echo "Установка zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "Установка zsh-completions"
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
+echo "Настройка alacritty"
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
 echo "Установка Rust"
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh

@@ -9,7 +9,6 @@ map("n", "<leader>cx", function()
 end, { desc = "Close All Buffers" })
 
 -- Русская раскладка
-map("i", "оо", "<ESC>")
 map("n", "ш", "i")
 map("n", "р", "h")
 map("n", "о", "j")
@@ -76,6 +75,9 @@ map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
 -- Telescope
 map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Zoxide" })
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
+
+-- LazyGit
+map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
 
 -- Важная настройка
 map("n", "<Left>", ":echo 'Use h'<CR>")
