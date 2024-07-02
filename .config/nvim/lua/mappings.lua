@@ -2,13 +2,24 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
--- map("n", ";", ":", { desc = "CMD enter command mode" })
+
+-- Удаление x не трогает буфер обмена
+vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
+
+-- Русская раскладка
+map("n", "ш", "i")
+map("n", "р", "h")
+map("n", "о", "j")
+map("n", "л", "k")
+map("n", "д", "l")
+map("n", "ч", "x")
+map("n", "ц", "w")
+map("n", "и", "b")
 
 -- Emmet
 map({ "n", "v" }, "<leader>xe", function()
@@ -16,9 +27,6 @@ map({ "n", "v" }, "<leader>xe", function()
 end, { desc = "Open Emmet" })
 
 -- Debug
-map("n", "<leader>du", function()
-  require("dapui").toggle()
-end, { desc = "Toggle Debug UI" })
 map("n", "<leader>db", function()
   require("dap").toggle_breakpoint()
 end, { desc = "Toggle Breakpoint" })
@@ -28,6 +36,14 @@ end, { desc = "Start" })
 map("n", "<leader>dn", function()
   require("dap").step_over()
 end, { desc = "Step Over" })
+map("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "Toggle Debug UI" })
+map("n", "<leader>dus", function()
+  local widgets = require "dap.ui.widgets"
+  local sidebar = widgets.sidebar(widgets.scopes)
+  sidebar.toggle()
+end, { desc = "Open debugging sidebar" })
 
 -- Debug Python
 map("n", "<Leader>dpr", function()
@@ -35,12 +51,12 @@ map("n", "<Leader>dpr", function()
 end, { desc = "Debug Python Run" })
 
 -- Trouble
-map("n", "<leader>qx", "<cmd>TroubleToggle<CR>", { desc = "Open Trouble" })
-map("n", "<leader>qw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = "Open Workspace Trouble" })
-map("n", "<leader>qd", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = "Open Document Trouble" })
-map("n", "<leader>qq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open Quickfix" })
-map("n", "<leader>ql", "<cmd>TroubleToggle loclist<CR>", { desc = "Open Location List" })
-map("n", "<leader>qt", "<cmd>TodoTrouble<CR>", { desc = "Open Todo Trouble" })
+map("n", "<leader>qx", "<cmd>Trouble<CR>", { desc = "Open Trouble" })
+map("n", "<leader>qt", "<cmd>Trouble todo focus<CR>", { desc = "Open Todo Trouble" })
+map("n", "<leader>qd", "<cmd>Trouble diagnostics toggle focus<cr>", { desc = "Diagnostics Trouble" })
+map("n", "<leader>qs", "<cmd>Trouble symbols toggle focus<cr>", { desc = "Symbols Trouble" })
+map("n", "<leader>ql", "<cmd>Trouble loclist toggle focus<cr>", { desc = "Location List Trouble" })
+map("n", "<leader>qq", "<cmd>Trouble qflist toggle focus<cr>", { desc = "Quickfix List Trouble" })
 
 -- Rename
 map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
@@ -60,8 +76,19 @@ map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
 -- end, { expr = true, silent = true })
 
 -- Telescope
-map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Zoxide" })
-map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
+map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zoxide" })
+map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+
+-- LazyGit
+map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
+
+-- Rust
+map("n", "<leader>rur", function()
+  vim.cmd.RustLsp "runnables"
+end, { desc = "RustLsp runnanles" })
+map("n", "<leader>ruc", function()
+  vim.cmd.RustLsp "codeAction"
+end, { desc = "RustLsp Code Action" })
 
 -- Важная настройка
 map("n", "<Left>", ":echo 'Use h'<CR>")

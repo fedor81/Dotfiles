@@ -26,6 +26,8 @@ return {
         "python",
         "javascript",
         "cpp",
+        "rust",
+        "toml",
       },
     },
   },
@@ -50,9 +52,18 @@ return {
         -- C++
         "clangd",
         "clang-format",
+        -- Rust
+        "rust-analyzer",
+        -- Для нескольких языков
         "codelldb",
       },
     },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    ft = { "rust" },
+    version = "^4", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -86,6 +97,24 @@ return {
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("telescope").load_extension "lazygit"
+    end,
   },
   {
     "smjonas/inc-rename.nvim",
@@ -135,20 +164,10 @@ return {
       },
     },
   },
-  -- {
-  --   "Pocco81/auto-save.nvim",
-  --   event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
-  --   cmd = "ASToggle", -- optional for lazy loading on command
-  --   config = function()
-  --     require("auto-save").setup {}
-  --   end,
-  -- },
-  -- Tests
-  {
+  { -- Tests
     "nvim-neotest/nvim-nio",
   },
-  -- Debbuger
-  {
+  { -- Debbuger
     "mfussenegger/nvim-dap",
   },
   {
@@ -194,6 +213,13 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
+    end,
+  },
+  { -- Crates для Rust
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require("crates").setup()
     end,
   },
   -- html и css генератор

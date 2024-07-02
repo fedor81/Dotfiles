@@ -11,15 +11,15 @@ sed -i '' '/env zsh -l/d' ohmyzsh_install.sh
 sh ohmyzsh_install.sh
 
 echo "Клонирование конфига"
-TEMP_DIR=$(mktemp -d)
-git clone https://github.com/fedor81/Dotfiles.git $TEMP_DIR
-mv $TEMP_DIR/* ~
-rm -rf $TEMP_DIR
+SCRIPT_DIR=$(dirname "$BASH_SOURCE")
+git clone https://github.com/fedor81/Dotfiles.git $SCRIPT_DIR
+mv $SCRIPT_DIR/* ~
 
 PACKAGES=(
     neovim
     eza
     thefuck
+    alacritty
 
     yazi
     # Следующие плагины нужны для поддержки yazi
@@ -37,18 +37,26 @@ PACKAGES=(
     # Для c++
     llvm
     cppcheck
+
+    # Для Rust
+    graphviz
 )
 
 # Определение os и установщика пакетов
 OS="$(uname)"
 INSTALLER=""
 
-if [ "$OS" == "Darwin" ]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     # MacOS
     INSTALLER="brew install"
-else
-    # Ubuntu/Debian
-    INSTALLER="sudo apt-get install -y"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
+        # Arch Linux or Manjaro
+        INSTALLER="sudo pacman -S --noconfirm"
+        # Ubuntu/Debian
+    else
+        INSTALLER="sudo apt-get install -y"
+    fi
 fi
 
 echo "Установка пакетов"
@@ -57,6 +65,17 @@ do
     $INSTALLER $PACKAGE
 done
 
+echo "Установка zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "Установка zsh-completions"
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
+echo "Настройка alacritty"
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+echo "Установка Rust"
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 echo "Установка менеджера плагинов tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

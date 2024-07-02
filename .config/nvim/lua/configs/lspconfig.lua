@@ -1,10 +1,9 @@
--- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "taplo" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -65,6 +64,7 @@ lspconfig.emmet_language_server.setup {
     "pug",
     "typescriptreact",
   },
+
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.
   init_options = {
