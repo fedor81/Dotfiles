@@ -3,6 +3,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    json = { "prettier" },
     htmldjango = { "djlint" },
     python = { "black" },
     cpp = { "clang-format" },
