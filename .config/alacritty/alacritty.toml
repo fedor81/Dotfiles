@@ -13,7 +13,8 @@ glyph_offset.y = 5
 size = 16.0
 
 [window]
+decorations = "Buttonless"
 dimensions.columns = 125
-dimensions.lines = 33
+dimensions.lines = 30
 opacity = 0.8
 blur = true

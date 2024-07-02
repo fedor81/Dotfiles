@@ -11,10 +11,9 @@ sed -i '' '/env zsh -l/d' ohmyzsh_install.sh
 sh ohmyzsh_install.sh
 
 echo "Клонирование конфига"
-TEMP_DIR=$(mktemp -d)
-git clone https://github.com/fedor81/Dotfiles.git $TEMP_DIR
-mv $TEMP_DIR/* ~
-rm -rf $TEMP_DIR
+SCRIPT_DIR=$(dirname "$BASH_SOURCE")
+git clone https://github.com/fedor81/Dotfiles.git $SCRIPT_DIR
+mv $SCRIPT_DIR/* ~
 
 PACKAGES=(
     neovim
@@ -38,18 +37,26 @@ PACKAGES=(
     # Для c++
     llvm
     cppcheck
+
+    # Для Rust
+    graphviz
 )
 
 # Определение os и установщика пакетов
 OS="$(uname)"
 INSTALLER=""
 
-if [ "$OS" == "Darwin" ]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     # MacOS
     INSTALLER="brew install"
-else
-    # Ubuntu/Debian
-    INSTALLER="sudo apt-get install -y"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
+        # Arch Linux or Manjaro
+        INSTALLER="sudo pacman -S --noconfirm"
+        # Ubuntu/Debian
+    else
+        INSTALLER="sudo apt-get install -y"
+    fi
 fi
 
 echo "Установка пакетов"

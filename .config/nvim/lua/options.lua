@@ -6,6 +6,7 @@ vim.opt.mousefocus = true
 -- vim.opt.so = 10
 
 vim.opt.swapfile = false -- Отключить swap файлы nvim
+vim.opt.ignorecase = true -- При поиске
 
 local tab_width = 4
 

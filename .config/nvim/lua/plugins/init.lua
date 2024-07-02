@@ -52,11 +52,18 @@ return {
         -- C++
         "clangd",
         "clang-format",
-        "codelldb",
         -- Rust
         "rust-analyzer",
+        -- Для нескольких языков
+        "codelldb",
       },
     },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    ft = { "rust" },
+    version = "^4", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -157,20 +164,10 @@ return {
       },
     },
   },
-  -- {
-  --   "Pocco81/auto-save.nvim",
-  --   event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
-  --   cmd = "ASToggle", -- optional for lazy loading on command
-  --   config = function()
-  --     require("auto-save").setup {}
-  --   end,
-  -- },
-  -- Tests
-  {
+  { -- Tests
     "nvim-neotest/nvim-nio",
   },
-  -- Debbuger
-  {
+  { -- Debbuger
     "mfussenegger/nvim-dap",
   },
   {
