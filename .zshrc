@@ -126,3 +126,5 @@ eval "$(zoxide init zsh)"
 
 # Исправление неправильно написанных команд
 eval $(thefuck --alias)
+
+alias n="nvim && clear"

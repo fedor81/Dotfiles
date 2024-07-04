@@ -11,6 +11,9 @@ end, { desc = "Close All Buffers" })
 -- Удаление x не трогает буфер обмена
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
+-- NvimTree
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle Window" })
+
 -- Русская раскладка
 map("n", "ш", "i")
 map("n", "р", "h")
@@ -79,8 +82,11 @@ map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
 map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zoxide" })
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
 
--- LazyGit
+-- Git
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
+map("n", "<leader>ng", function()
+  require("neogit").open()
+end, { desc = "Open NeoGit" })
 
 -- Rust
 map("n", "<leader>rur", function()
