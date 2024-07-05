@@ -38,7 +38,3 @@ vim.schedule(function()
   require "mappings"
   require "commands"
 end)
-
--- Прозрачность
-vim.cmd "hi Normal guibg=NONE ctermbg=NONE"
-vim.cmd "hi NvimTreeNormal guibg=NONE ctermbg=NONE"

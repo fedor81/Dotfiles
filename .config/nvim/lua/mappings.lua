@@ -12,7 +12,7 @@ end, { desc = "Close All Buffers" })
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
 -- NvimTree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle Window" })
+-- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle Window" })
 
 -- Русская раскладка
 map("n", "ш", "i")

@@ -1,21 +1,16 @@
 #!/bin/bash
 
-echo "Установка ohmyzsh"
-# Download the installer script
-curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o ohmyzsh_install.sh
-# Make a backup of the original installer
-cp ohmyzsh_install.sh ohmyzsh_install.sh.bak
-# Remove the line that changes the shell
-sed -i '' '/env zsh -l/d' ohmyzsh_install.sh
-# Run the modified installer
-sh ohmyzsh_install.sh
+GREEN='\033[0;32m'
+NOCOLOR='\033[0m'
 
-echo "Клонирование конфига"
-SCRIPT_DIR=$(dirname "$BASH_SOURCE")
-git clone https://github.com/fedor81/Dotfiles.git $SCRIPT_DIR
-mv $SCRIPT_DIR/* ~
+print() {
+    echo -e "${GREEN}\n=== $1 ===\n${NOCOLOR}"
+}
 
 PACKAGES=(
+    zsh
+    git
+    curl
     neovim
     eza
     thefuck
@@ -38,7 +33,7 @@ PACKAGES=(
     llvm
     cppcheck
 
-    # Для Rust
+    # Для Neovim Rust
     graphviz
 )
 
@@ -59,31 +54,38 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
 fi
 
-echo "Установка пакетов"
+print "Установка пакетов"
 for PACKAGE in "${PACKAGES[@]}"
 do
     $INSTALLER $PACKAGE
 done
 
-echo "Установка zsh-autosuggestions"
+print "Установка Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+print "Клонирование конфига"
+CURRENT_DIR=$(pwd)
+TEMP_DIR="$CURRENT_DIR/TEMP_DIR"
+TARGET_DIR="$HOME"
+REPO_URL="https://github.com/fedor81/Dotfiles.git"
+git clone "$REPO_URL" "$TEMP_DIR"
+
+cp -r "$TEMP_DIR/."* "$TARGET_DIR/"
+rm -rf "$TEMP_DIR"
+
+print "Установка zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-echo "Установка zsh-completions"
+print "Установка zsh-completions"
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 
-echo "Настройка alacritty"
+print "Настройка alacritty"
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
-echo "Установка Rust"
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-
-echo "Установка менеджера плагинов tmux"
+print "Установка менеджера плагинов tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-echo "Синхронизация плагинов nvim"
+print "Синхронизация плагинов nvim"
 nvim --headless +"Lazy! sync" +qa
 nvim --headless "+MasonUpdate" +qa
-
-# Переключение на установленную zsh
-exec zsh -l

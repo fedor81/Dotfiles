@@ -6,6 +6,7 @@ local M = {}
 
 M.ui = {
   theme = "palenight",
+  transparency = true,
   nvdash = {
     load_on_startup = true,
   },

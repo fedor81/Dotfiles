@@ -137,6 +137,11 @@ return {
     end,
   },
   {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -175,7 +180,7 @@ return {
       execution_message = {
         enabled = false,
       },
-      debounce_delay = 2000,
+      -- debounce_delay = 2000,
     },
   },
   { -- Tests
