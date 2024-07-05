@@ -15,6 +15,8 @@ PACKAGES=(
     eza
     thefuck
     alacritty
+    lazygit
+    telegram-desktop
 
     yazi
     # Следующие плагины нужны для поддержки yazi
@@ -48,8 +50,12 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
         # Arch Linux or Manjaro
         INSTALLER="sudo pacman -S --noconfirm"
-        # Ubuntu/Debian
+        PACKAGES+=(
+            timeshift
+            ttf-jetbrains-mono-nerd
+        )
     else
+        # Ubuntu/Debian
         INSTALLER="sudo apt-get install -y"
     fi
 fi

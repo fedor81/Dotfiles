@@ -130,6 +130,15 @@ return {
     config = true,
   },
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
     "smjonas/inc-rename.nvim",
     event = "BufRead",
     config = function()
@@ -241,8 +250,7 @@ return {
       require("crates").setup()
     end,
   },
-  -- html и css генератор
-  {
+  { -- html и css генератор
     "olrtg/nvim-emmet",
     config = function() end,
   },
@@ -311,28 +319,16 @@ return {
     "wakatime/vim-wakatime",
     lazy = false,
   },
-  -- Нейросеть
   {
-    "Exafunction/codeium.vim",
-    enabled = false,
-    event = "BufEnter",
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true, silent = true })
+      require("codeium").setup {}
     end,
   },
-  -- GitHub Copilot Chat
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     event = "VeryLazy",
@@ -346,17 +342,6 @@ return {
     },
   },
 }
--- Dashboard если вдруг понадобится
--- {
---   'nvimdev/dashboard-nvim',
---   event = 'VimEnter',
---   config = function()
---     require('dashboard').setup {
---       -- config
---     }
---   end,
---   dependencies = { {'nvim-tree/nvim-web-devicons'}}
--- },
 -- GitHub Copilot только нужно перебиндить tab
 -- {
 --   "github/copilot.vim",
