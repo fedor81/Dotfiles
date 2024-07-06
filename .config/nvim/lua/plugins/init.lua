@@ -13,8 +13,7 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- Подстветка синтаксиса
-  {
+  { -- Подстветка синтаксиса
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -68,7 +67,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = "jvgrootveld/telescope-zoxide",
-
     opts = {
       extensions_list = { "fzf", "zoxide" },
       extensions = {
@@ -229,18 +227,7 @@ return {
       "mfussenegger/nvim-dap",
     },
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require "configs.dap-ui"
     end,
   },
   { -- Crates для Rust
@@ -269,18 +256,7 @@ return {
     "dense-analysis/ale",
     event = "BufRead",
     config = function()
-      local g = vim.g
-      g.ale_linters = {
-        python = { "mypy" },
-        lua = { "lua_language_server" },
-        cpp = { "clangd", "cppcheck", "cpplint", "clangtidy" },
-      }
-      -- Для форматировния используется conform
-      -- g.ale_fixers = {
-      --   ["*"] = { "prettier" },
-      --   python = { "black" },
-      -- }
-      -- g.ale_fix_on_save = 1
+      require "configs.ale"
     end,
   },
   -- Автозакрытие тегов
@@ -341,16 +317,16 @@ return {
       debug = true, -- Enable debugging
     },
   },
+  { -- GitHub Copilot
+    "github/copilot.vim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function() -- Mapping tab is already used by NvChad
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_tab_fallback = ""
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+    end,
+  },
 }
--- GitHub Copilot только нужно перебиндить tab
--- {
---   "github/copilot.vim",
---   lazy = false,
---   config = function() -- Mapping tab is already used by NvChad
---     vim.g.copilot_no_tab_map = true
---     vim.g.copilot_assume_mapped = true
---     vim.g.copilot_tab_fallback = ""
---     -- The mapping is set to other key, see custom/lua/mappings
---     -- or run <leader>ch to see copilot mapping section
---   end,
--- },
