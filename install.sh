@@ -17,6 +17,7 @@ PACKAGES=(
     alacritty
     lazygit
     telegram-desktop
+    discord
 
     yazi
     # Следующие плагины нужны для поддержки yazi

@@ -65,6 +65,19 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
+    "iabdelkareem/csharp.nvim",
+    ft = { "cs" },
+    dependencies = {
+      "williamboman/mason.nvim", -- Required, automatically installs omnisharp
+      "mfussenegger/nvim-dap",
+      "Tastyep/structlog.nvim", -- Optional, but highly recommended for debugging
+    },
+    config = function()
+      require("mason").setup() -- Mason setup must run before csharp
+      require("csharp").setup()
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = "jvgrootveld/telescope-zoxide",
     opts = {
@@ -297,6 +310,7 @@ return {
   },
   {
     "Exafunction/codeium.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",

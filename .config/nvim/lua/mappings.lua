@@ -97,7 +97,7 @@ map("n", "<leader>ruc", function()
 end, { desc = "RustLsp Code Action" })
 
 -- Важная настройка
-map("n", "<Left>", ":echo 'Use h'<CR>")
-map("n", "<Right>", ":echo 'Use l'<CR>")
-map("n", "<Up>", ":echo 'Use k'<CR>")
-map("n", "<Down>", ":echo 'Use j'<CR>")
+-- map("n", "<Left>", ":echo 'Use h'<CR>")
+-- map("n", "<Right>", ":echo 'Use l'<CR>")
+-- map("n", "<Up>", ":echo 'Use k'<CR>")
+-- map("n", "<Down>", ":echo 'Use j'<CR>")

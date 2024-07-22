@@ -14,13 +14,13 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+map Q @@
 
 " Mappings
 map <leader>ds <Action>(Debug)
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>rn <Action>(RenameElement)
+map <leader>fm <Action>(ReformatCode)
 
 " Exit to normal mode with 'jj'
 inoremap jj <ESC>
@@ -29,3 +29,15 @@ imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <Right>
+
+" Plugins
+
+set which-key
+" disable the timeout option
+set notimeout
+" increase the timeoutlen (default: 1000), don't add space around the equal sign
+set timeoutlen=5000
+
+Plug 'tpope/vim-surround'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-commentary'
