@@ -3,6 +3,7 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
+map("n", "<leader>n", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
@@ -92,9 +93,6 @@ end, { desc = "Open NeoGit" })
 map("n", "<leader>rur", function()
   vim.cmd.RustLsp "runnables"
 end, { desc = "RustLsp runnanles" })
-map("n", "<leader>ruc", function()
-  vim.cmd.RustLsp "codeAction"
-end, { desc = "RustLsp Code Action" })
 
 -- Важная настройка
 -- map("n", "<Left>", ":echo 'Use h'<CR>")
