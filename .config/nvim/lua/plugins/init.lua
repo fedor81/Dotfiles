@@ -253,9 +253,14 @@ return {
       require("crates").setup()
     end,
   },
+  { -- Establish good command workflow and quit bad habit.
+    "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = require "configs.hardtime",
+  },
   { -- html и css генератор
     "olrtg/nvim-emmet",
-    config = function() end,
   },
   -- Оборачивает содержимое
   {
@@ -283,11 +288,6 @@ return {
       require("nvim-ts-autotag").setup()
     end,
     ft = { "html", "xml" },
-  },
-  -- Подсказки при написании функции
-  {
-    "folke/neodev.nvim",
-    opts = {},
   },
   -- Быстрое перемещение
   {

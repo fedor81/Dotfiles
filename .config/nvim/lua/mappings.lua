@@ -2,12 +2,12 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
 map("n", "<leader>n", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
+map("i", "zz", "<ESC>zzi", { desc = "Center this line" })
 
 -- Удаление x не трогает буфер обмена
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
@@ -64,6 +64,9 @@ map("n", "<leader>qq", "<cmd>Trouble qflist toggle focus<cr>", { desc = "Quickfi
 
 -- Rename
 map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
+
+-- Hardtime
+map("n", "<leader>ht", "<cmd>Hardtime toggle<CR>", { desc = "Toggle Hardtime" })
 
 -- Codeium
 vim.keymap.set("i", "<C-g>", function()
