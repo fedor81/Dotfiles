@@ -7,13 +7,14 @@ map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
-map("i", "zz", "<ESC>zzi", { desc = "Center this line" })
+map("i", "zz", "<ESC>zzi", { desc = "Center this line", silent = true })
+
+-- Убрать создание терминала из NvChad
+vim.keymap.del("n", "<leader>h")
+vim.keymap.del("n", "<leader>v")
 
 -- Удаление x не трогает буфер обмена
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
-
--- NvimTree
--- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle Window" })
 
 -- Русская раскладка
 map("n", "ш", "i")
@@ -85,6 +86,9 @@ end, { expr = true, silent = true })
 -- Telescope
 map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zoxide" })
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+
+-- Find and Replace
+map("n", "<leader>gf", "<cmd>GrugFar<cr>", { desc = "GrugFar | Find And Replace", silent = true })
 
 -- Git
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
