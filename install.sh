@@ -48,8 +48,15 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
         # Arch Linux or Manjaro
         INSTALLER="sudo pacman -S --noconfirm"
-        # Ubuntu/Debian
+        PACKAGES+=(
+            timeshift
+            ttf-jetbrains-mono-nerd
+            hyprland
+            waybar
+            wofi
+        )
     else
+        # Ubuntu/Debian
         INSTALLER="sudo apt-get install -y"
     fi
 fi
