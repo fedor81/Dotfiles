@@ -13,77 +13,40 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- Подстветка синтаксиса
-  {
+  { -- Подстветка синтаксиса
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "python",
-        "javascript",
-        "cpp",
-        "rust",
-        "toml",
-      },
-    },
+    opts = require "configs.treesitter",
   },
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "emmet-language-server",
-        "typescript-language-server", -- JavaScript
-        -- Python
-        "pyright",
-        "mypy",
-        "ruff",
-        "black",
-        "debugpy",
-        "djlint", -- Django
-        -- C++
-        "clangd",
-        "clang-format",
-        -- Rust
-        "rust-analyzer",
-        -- Для нескольких языков
-        "codelldb",
-      },
-    },
+    opts = require "configs.mason_nvim",
   },
   {
     "mrcjkb/rustaceanvim",
     ft = { "rust" },
     version = "^4", -- Recommended
     lazy = false, -- This plugin is already lazy
+    config = function()
+      require "configs.rustaceanvim"
+    end,
+  },
+  {
+    "iabdelkareem/csharp.nvim",
+    ft = { "cs" },
+    dependencies = {
+      "williamboman/mason.nvim", -- Required, automatically installs omnisharp
+      "mfussenegger/nvim-dap",
+      "Tastyep/structlog.nvim", -- Optional, but highly recommended for debugging
+    },
+    config = function()
+      require("mason").setup() -- Mason setup must run before csharp
+      require("csharp").setup()
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = "jvgrootveld/telescope-zoxide",
-
-    opts = {
-      extensions_list = { "fzf", "zoxide" },
-      extensions = {
-        fzf = {
-          fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-          -- the default case_mode is "smart_case"
-        },
-        zoxide = {
-          prompt_title = "[ Walking on the shoulders of TJ ]",
-        },
-      },
-    },
+    opts = require "configs.telescope_nvim",
   },
   {
     "jvgrootveld/telescope-zoxide",
@@ -91,6 +54,15 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
+  },
+  {
+    "MagicDuck/grug-far.nvim",
+    cmd = "GrugFar",
+    opts = {
+      keymaps = {
+        close = { n = "<Esc>" },
+      },
+    },
   },
   {
     "folke/trouble.nvim",
@@ -130,6 +102,15 @@ return {
     config = true,
   },
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
     "smjonas/inc-rename.nvim",
     event = "BufRead",
     config = function()
@@ -140,6 +121,14 @@ return {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
     opts = {},
+  },
+  {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
   },
   {
     "folke/todo-comments.nvim",
@@ -158,19 +147,7 @@ return {
   {
     "m4xshen/smartcolumn.nvim",
     event = "BufRead",
-    opts = {
-      disabled_filetypes = {
-        "netrw",
-        "NvimTree",
-        "Lazy",
-        "mason",
-        "help",
-        "text",
-        "markdown",
-        "tex",
-        "html",
-      },
-    },
+    opts = require "configs.smartcolumn",
   },
   {
     "okuuva/auto-save.nvim",
@@ -220,18 +197,7 @@ return {
       "mfussenegger/nvim-dap",
     },
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require "configs.dap-ui"
     end,
   },
   { -- Crates для Rust
@@ -241,10 +207,14 @@ return {
       require("crates").setup()
     end,
   },
-  -- html и css генератор
-  {
+  { -- Establish good command workflow and quit bad habit.
+    "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = require "configs.hardtime",
+  },
+  { -- html и css генератор
     "olrtg/nvim-emmet",
-    config = function() end,
   },
   -- Оборачивает содержимое
   {
@@ -261,18 +231,7 @@ return {
     "dense-analysis/ale",
     event = "BufRead",
     config = function()
-      local g = vim.g
-      g.ale_linters = {
-        python = { "mypy" },
-        lua = { "lua_language_server" },
-        cpp = { "clangd", "cppcheck", "cpplint", "clangtidy" },
-      }
-      -- Для форматировния используется conform
-      -- g.ale_fixers = {
-      --   ["*"] = { "prettier" },
-      --   python = { "black" },
-      -- }
-      -- g.ale_fix_on_save = 1
+      require "configs.ale"
     end,
   },
   -- Автозакрытие тегов
@@ -283,11 +242,6 @@ return {
       require("nvim-ts-autotag").setup()
     end,
     ft = { "html", "xml" },
-  },
-  -- Подсказки при написании функции
-  {
-    "folke/neodev.nvim",
-    opts = {},
   },
   -- Быстрое перемещение
   {
@@ -311,28 +265,17 @@ return {
     "wakatime/vim-wakatime",
     lazy = false,
   },
-  -- Нейросеть
   {
-    "Exafunction/codeium.vim",
-    enabled = false,
-    event = "BufEnter",
+    "Exafunction/codeium.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true, silent = true })
-      vim.keymap.set("i", "<c-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true, silent = true })
+      require("codeium").setup {}
     end,
   },
-  -- GitHub Copilot Chat
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     event = "VeryLazy",
@@ -345,27 +288,16 @@ return {
       debug = true, -- Enable debugging
     },
   },
+  { -- GitHub Copilot
+    "github/copilot.vim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function() -- Mapping tab is already used by NvChad
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_tab_fallback = ""
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+    end,
+  },
 }
--- Dashboard если вдруг понадобится
--- {
---   'nvimdev/dashboard-nvim',
---   event = 'VimEnter',
---   config = function()
---     require('dashboard').setup {
---       -- config
---     }
---   end,
---   dependencies = { {'nvim-tree/nvim-web-devicons'}}
--- },
--- GitHub Copilot только нужно перебиндить tab
--- {
---   "github/copilot.vim",
---   lazy = false,
---   config = function() -- Mapping tab is already used by NvChad
---     vim.g.copilot_no_tab_map = true
---     vim.g.copilot_assume_mapped = true
---     vim.g.copilot_tab_fallback = ""
---     -- The mapping is set to other key, see custom/lua/mappings
---     -- or run <leader>ch to see copilot mapping section
---   end,
--- },

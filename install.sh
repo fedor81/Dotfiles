@@ -15,6 +15,9 @@ PACKAGES=(
     eza
     thefuck
     alacritty
+    lazygit
+    telegram-desktop
+    discord
 
     yazi
     # Следующие плагины нужны для поддержки yazi
@@ -95,4 +98,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 print "Синхронизация плагинов nvim"
 nvim --headless +"Lazy! sync" +qa
-nvim --headless "+MasonUpdate" +qa
+nvim --headless "+MasonInstallAll" +qa

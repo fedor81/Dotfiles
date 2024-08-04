@@ -2,17 +2,19 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", {desc = "Save file"})
+map("n", "<leader>n", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
+map("i", "zz", "<ESC>zzi", { desc = "Center this line", silent = true })
+
+-- Убрать создание терминала из NvChad
+vim.keymap.del("n", "<leader>h")
+vim.keymap.del("n", "<leader>v")
 
 -- Удаление x не трогает буфер обмена
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
-
--- NvimTree
--- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree Toggle Window" })
 
 -- Русская раскладка
 map("n", "ш", "i")
@@ -64,23 +66,29 @@ map("n", "<leader>qq", "<cmd>Trouble qflist toggle focus<cr>", { desc = "Quickfi
 -- Rename
 map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
 
+-- Hardtime
+map("n", "<leader>ht", "<cmd>Hardtime toggle<CR>", { desc = "Toggle Hardtime" })
+
 -- Codeium
--- map("i", "<C-g>", function()
---   return vim.fn["codeium#Accept"]()
--- end, { expr = true, silent = true })
--- map("i", "<c-;>", function()
---   return vim.fn["codeium#CycleCompletions"](1)
--- end, { expr = true, silent = true })
--- map("i", "<c-,>", function()
---   return vim.fn["codeium#CycleCompletions"](-1)
--- end, { expr = true, silent = true })
--- map("i", "<c-x>", function()
---   return vim.fn["codeium#Clear"]()
--- end, { expr = true, silent = true })
+vim.keymap.set("i", "<C-g>", function()
+  return vim.fn["codeium#Accept"]()
+end, { expr = true, silent = true })
+vim.keymap.set("i", "<c-;>", function()
+  return vim.fn["codeium#CycleCompletions"](1)
+end, { expr = true, silent = true })
+vim.keymap.set("i", "<c-,>", function()
+  return vim.fn["codeium#CycleCompletions"](-1)
+end, { expr = true, silent = true })
+vim.keymap.set("i", "<c-x>", function()
+  return vim.fn["codeium#Clear"]()
+end, { expr = true, silent = true })
 
 -- Telescope
 map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zoxide" })
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+
+-- Find and Replace
+map("n", "<leader>gf", "<cmd>GrugFar<cr>", { desc = "GrugFar | Find And Replace", silent = true })
 
 -- Git
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
@@ -92,12 +100,9 @@ end, { desc = "Open NeoGit" })
 map("n", "<leader>rur", function()
   vim.cmd.RustLsp "runnables"
 end, { desc = "RustLsp runnanles" })
-map("n", "<leader>ruc", function()
-  vim.cmd.RustLsp "codeAction"
-end, { desc = "RustLsp Code Action" })
 
 -- Важная настройка
-map("n", "<Left>", ":echo 'Use h'<CR>")
-map("n", "<Right>", ":echo 'Use l'<CR>")
-map("n", "<Up>", ":echo 'Use k'<CR>")
-map("n", "<Down>", ":echo 'Use j'<CR>")
+-- map("n", "<Left>", ":echo 'Use h'<CR>")
+-- map("n", "<Right>", ":echo 'Use l'<CR>")
+-- map("n", "<Up>", ":echo 'Use k'<CR>")
+-- map("n", "<Down>", ":echo 'Use j'<CR>")

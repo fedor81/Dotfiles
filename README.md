@@ -1,6 +1,10 @@
 # Laroxyss dotfiles
 
 ## How to use
+Install `zsh`. Then install `oh-my-zsh`
+
+```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
+
 You can install my configuration using the script `install.sh`
 
 Or you can only install neovim config.
