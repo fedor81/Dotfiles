@@ -96,6 +96,9 @@ map("n", "<leader>ng", function()
   require("neogit").open()
 end, { desc = "Open NeoGit" })
 
+map("n", "<Leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview File History" })
+map("n", "<Leader>gv", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
+
 -- Rust
 map("n", "<leader>rur", function()
   vim.cmd.RustLsp "runnables"
