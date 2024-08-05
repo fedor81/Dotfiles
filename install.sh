@@ -54,6 +54,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         PACKAGES+=(
             timeshift
             ttf-jetbrains-mono-nerd
+            hyprland
+            waybar
+            wofi
         )
     else
         # Ubuntu/Debian
