@@ -7,7 +7,7 @@ map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
-map("i", "zz", "<ESC>zzi", { desc = "Center this line", silent = true })
+map("i", "zz", "<ESC>zza", { desc = "Center this line", silent = true })
 
 -- Убрать создание терминала из NvChad
 vim.keymap.del("n", "<leader>h")
@@ -95,6 +95,9 @@ map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
 map("n", "<leader>ng", function()
   require("neogit").open()
 end, { desc = "Open NeoGit" })
+
+map("n", "<Leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview File History" })
+map("n", "<Leader>gv", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
 
 -- Rust
 map("n", "<leader>rur", function()
