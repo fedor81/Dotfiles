@@ -130,3 +130,5 @@ eval $(thefuck --alias)
 n() {
   nvim "$@" && clear
 }
+
+alias ya="yazi"

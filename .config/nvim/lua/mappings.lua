@@ -88,7 +88,9 @@ map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zox
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
 
 -- Find and Replace
-map("n", "<leader>gf", "<cmd>GrugFar<cr>", { desc = "GrugFar | Find And Replace", silent = true })
+map("n", "<leader>gf", function()
+  require("grug-far").grug_far { prefills = { search = vim.fn.expand "<cword>" } }
+end, { desc = "GrugFar - Find Under Cursor", silent = true })
 
 -- Git
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })

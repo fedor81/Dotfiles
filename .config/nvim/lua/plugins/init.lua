@@ -57,7 +57,7 @@ return {
   },
   {
     "MagicDuck/grug-far.nvim",
-    cmd = "GrugFar",
+    event = "VeryLazy",
     opts = {
       keymaps = {
         close = { n = "<Esc>" },

@@ -5,7 +5,13 @@ Install `zsh`. Then install `oh-my-zsh`
 
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
 
-You can install my configuration using the script `install.sh`
+You can install my configuration using the script `myscripts/install.sh`
+
+```sh
+git clone https://github.com/fedor81/Dotfiles.git
+chmod +x Dotfiles/myscripts/install.sh
+Dotfiles/myscripts/install.sh
+```
 
 Or you can only install neovim config.
 
