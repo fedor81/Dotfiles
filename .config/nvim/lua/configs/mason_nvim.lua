@@ -6,6 +6,7 @@ return {
     "css-lsp",
     "prettier",
     "emmet-language-server",
+    "bash-language-server",
     "typescript-language-server", -- JavaScript
     -- Python
     "pyright",

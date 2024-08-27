@@ -40,13 +40,49 @@ PACKAGES=(
     graphviz
 )
 
+INSTALL_HYPR=false
+
+HYPR_PACKAGES=(
+    # hyprland и разное
+    hyprland
+    waybar
+    wofi
+    dunst
+    pipewire
+    polkit-kde-agent
+    qt5-wayland
+    qt6-wayland
+    cliphist
+    thunar
+    brightnessctl
+    playerctl
+)
+
+# Обработка флагов
+while [ -n "$1" ]
+do
+    case "$1" in
+        --hypr) INSTALL_HYPR=true ;;
+        -h|--help)
+            echo "Usage: $0 [options]"
+            echo "Options:"
+            echo "  --hypr       Install Hypr on Arch Linux"
+            echo "  -h, --help   Show this help message"
+            exit 0
+            ;;
+    esac
+    shift
+done
+
 # Определение os и установщика пакетов
 OS="$(uname)"
 INSTALLER=""
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # MacOS
+if [[ "$OSTYPE" == "darwin"* ]]; then   # MacOS
     INSTALLER="brew install"
+    PACKAGES+=(
+        iterm2
+    )
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
         # Arch Linux or Manjaro
@@ -54,24 +90,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         PACKAGES+=(
             timeshift
             ttf-jetbrains-mono-nerd
-            
-            # hyprland and more
-            hyprland
-            waybar
-            wofi
-            dunst
-            pipewire
-            polkit-kde-agent
-            qt5-wayland
-            qt6-wayland
-            cliphist
-            thunar
-            brightnessctl
-            playerctl
         )
-    else
-        # Ubuntu/Debian
-        INSTALLER="sudo apt-get install -y"
+
+        if [ "$INSTALL_HYPR" = true ]; then
+            PACKAGES+=("${HYPR_PACKAGES[@]}")
+        fi
     fi
 fi
 

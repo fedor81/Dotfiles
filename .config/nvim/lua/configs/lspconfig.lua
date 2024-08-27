@@ -14,6 +14,7 @@ local servers = {
   cssls = {},
   taplo = {},
   tsserver = {},
+  bashls = {},
 
   pyright = {
     settings = {
