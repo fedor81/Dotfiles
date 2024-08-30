@@ -11,10 +11,12 @@ local options = {
     rust = { "rustfmt" },
   },
 
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_fallback = true,
+  -- format_on_save = {
+  --   timeout_ms = 500,
+  --   lsp_fallback = true,
+  -- },
+  format_after_save = {
+    lsp_format = "fallback",
   },
 }
 

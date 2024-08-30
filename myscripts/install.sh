@@ -18,6 +18,9 @@ PACKAGES=(
     lazygit
     telegram-desktop
     discord
+    tlrc # для вызова help у какой либо утилиты
+    bat # Для копирования
+    atuin # Просмотр истории
 
     yazi
     # Следующие плагины нужны для поддержки yazi
@@ -82,6 +85,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then   # MacOS
     INSTALLER="brew install"
     PACKAGES+=(
         iterm2
+        skhd
     )
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
