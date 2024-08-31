@@ -1,112 +1,9 @@
 #!/bin/bash
 
-GREEN='\033[0;32m'
-NOCOLOR='\033[0m'
+# Определяем директорию, в которой находится скрипт
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
-print() {
-    echo -e "${GREEN}\n=== $1 ===\n${NOCOLOR}"
-}
-
-PACKAGES=(
-    zsh
-    git
-    curl
-    neovim
-    eza
-    thefuck
-    alacritty
-    lazygit
-    telegram-desktop
-    discord
-    tlrc # для вызова help у какой либо утилиты
-    bat # Для копирования
-    atuin # Просмотр истории
-
-    yazi
-    # Следующие плагины нужны для поддержки yazi
-    ffmpegthumbnailer
-    unarchiver
-    jq
-    poppler
-    fd
-
-    # Плагины для быстрого поиска
-    ripgrep
-    fzf
-    zoxide
-
-    # Для c++
-    llvm
-    cppcheck
-
-    # Для Neovim Rust
-    graphviz
-)
-
-INSTALL_HYPR=false
-
-HYPR_PACKAGES=(
-    # hyprland и разное
-    hyprland
-    waybar
-    wofi
-    dunst
-    pipewire
-    polkit-kde-agent
-    qt5-wayland
-    qt6-wayland
-    cliphist
-    thunar
-    brightnessctl
-    playerctl
-)
-
-# Обработка флагов
-while [ -n "$1" ]
-do
-    case "$1" in
-        --hypr) INSTALL_HYPR=true ;;
-        -h|--help)
-            echo "Usage: $0 [options]"
-            echo "Options:"
-            echo "  --hypr       Install Hypr on Arch Linux"
-            echo "  -h, --help   Show this help message"
-            exit 0
-            ;;
-    esac
-    shift
-done
-
-# Определение os и установщика пакетов
-OS="$(uname)"
-INSTALLER=""
-
-if [[ "$OSTYPE" == "darwin"* ]]; then   # MacOS
-    INSTALLER="brew install"
-    PACKAGES+=(
-        iterm2
-        skhd
-    )
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
-        # Arch Linux or Manjaro
-        INSTALLER="sudo pacman -S --noconfirm"
-        PACKAGES+=(
-            timeshift
-            ttf-jetbrains-mono-nerd
-        )
-
-        if [ "$INSTALL_HYPR" = true ]; then
-            PACKAGES+=("${HYPR_PACKAGES[@]}")
-        fi
-    fi
-fi
-
-print "Установка пакетов"
-for PACKAGE in "${PACKAGES[@]}"
-do
-    $INSTALLER $PACKAGE
-done
+source $SCRIPT_DIR/main.sh
 
 print "Установка Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -117,7 +14,6 @@ TEMP_DIR="$CURRENT_DIR/TEMP_DIR"
 TARGET_DIR="$HOME"
 REPO_URL="https://github.com/fedor81/Dotfiles.git"
 git clone "$REPO_URL" "$TEMP_DIR"
-
 cp -r "$TEMP_DIR/."* "$TARGET_DIR/"
 rm -rf "$TEMP_DIR"
 

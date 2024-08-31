@@ -13,6 +13,8 @@ chmod +x Dotfiles/myscripts/install.sh
 Dotfiles/myscripts/install.sh
 ```
 
+##### To update, use `myscripts/update.sh` 
+
 Or you can only install neovim config.
 
 ## Installation Neovim Config
