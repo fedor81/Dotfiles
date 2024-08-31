@@ -115,7 +115,7 @@ eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 
 # Поиск по истории atuin
-echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+eval "$(atuin init zsh)"
 
 n() {
   nvim "$@" && clear

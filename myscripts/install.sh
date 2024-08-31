@@ -30,6 +30,4 @@ print "Установка менеджера плагинов tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-print "Синхронизация плагинов nvim"
-nvim --headless +"Lazy! sync" +qa
-nvim --headless "+MasonInstallAll" +qa
+source $SCRIPT_DIR/nvim_update.sh
