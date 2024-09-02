@@ -73,6 +73,11 @@ map("n", "<leader>qs", "<cmd>Trouble symbols toggle focus<cr>", { desc = "Symbol
 map("n", "<leader>ql", "<cmd>Trouble loclist toggle focus<cr>", { desc = "Location List Trouble" })
 map("n", "<leader>qq", "<cmd>Trouble qflist toggle focus<cr>", { desc = "Quickfix List Trouble" })
 
+-- UFO - folding
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+map("n", "zR", require("ufo").openAllFolds, { desc = "UFO open all folds" })
+map("n", "zM", require("ufo").closeAllFolds, { desc = "UFO close all folds" })
+
 -- Rename
 map("n", "<leader>rn", ":IncRename ", { desc = "Rename word on cursor" })
 
@@ -96,9 +101,10 @@ end, { expr = true, silent = true })
 -- Telescope
 map("n", "<leader>fz", "<cmd>Telescope zoxide list<cr>", { desc = "Telescope Zoxide" })
 map("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+map("n", "<leader>fs", "<cmd>SessionSearch<CR>", { desc = "Session search" })
 
 -- Find and Replace
-map("n", "<leader>gf", function()
+map("n", "<leader>sr", function()
   require("grug-far").grug_far { prefills = { search = vim.fn.expand "<cword>" } }
 end, { desc = "GrugFar - Find Under Cursor", silent = true })
 

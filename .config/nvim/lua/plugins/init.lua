@@ -65,6 +65,41 @@ return {
     },
   },
   {
+    "rmagatti/auto-session",
+    lazy = false,
+    dependencies = {
+      "nvim-telescope/telescope.nvim", -- Only needed if you want to use session lens
+    },
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { "~/Downloads", "/", "~/Documents" },
+      bypass_save_filetypes = {
+        "NvimTree",
+        "nvdash",
+      },
+    },
+  },
+  { -- Folding
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    event = { "BufReadPost", "BufNewFile" },
+    opts = require "configs.nvim-ufo",
+  },
+  { -- UI for messages, cmdline and the popupmenu.
+    "folke/noice.nvim",
+    enabled = false, -- Надо настраивать, поэтому выключил
+    event = "VeryLazy",
+    opts = {
+      cmdline = { view = "cmdline" },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
+  {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
