@@ -12,5 +12,5 @@ if ! git pull -X theirs origin master; then
     exit 1
 fi
 
-source $SCRIPT_DIR/main.sh
-source $SCRIPT_DIR/nvim_update.sh
+source $SCRIPT_DIR/source/main.sh
+source $SCRIPT_DIR/source/nvim_update.sh

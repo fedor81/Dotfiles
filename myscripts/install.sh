@@ -3,7 +3,7 @@
 # Определяем директорию, в которой находится скрипт
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
-source $SCRIPT_DIR/main.sh
+source $SCRIPT_DIR/source/main.sh
 
 print "Установка Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -30,4 +30,4 @@ print "Установка менеджера плагинов tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-source $SCRIPT_DIR/nvim_update.sh
+source $SCRIPT_DIR/source/nvim_update.sh
