@@ -108,15 +108,8 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-# Вместо cd - Zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)" # Вместо cd - Zoxide
+eval $(thefuck --alias) # Исправление неправильно написанных команд - fuck
+eval "$(atuin init zsh)" # Поиск по истории atuin
 
-# Исправление неправильно написанных команд - fuck
-eval $(thefuck --alias)
-
-# Поиск по истории atuin
-eval "$(atuin init zsh)"
-
-n() {
-  nvim "$@" && clear
-}
+n() { nvim "$@" && clear }

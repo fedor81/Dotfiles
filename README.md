@@ -1,11 +1,20 @@
-# Laroxyss dotfiles
+## My Dotfiles
 
-## How to use
+![Preview](.img/preview.png)
+
+## Features
+- Neovim config
+- Tmux config
+- Zsh
+- Alacritty
+
+## Installation
 Install `zsh`. Then install `oh-my-zsh`
 
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
 
 You can install my configuration using the script `myscripts/install.sh`
+Installation is supported only on **arch** and **macOS**.
 
 ```sh
 git clone https://github.com/fedor81/Dotfiles.git
@@ -15,9 +24,8 @@ Dotfiles/myscripts/install.sh
 
 ##### To update, use `myscripts/update.sh` 
 
-Or you can only install neovim config.
 
-## Installation Neovim Config
+### You can only install neovim config.
 
  > Install requires Neovim 0.9+. Always review the code before installing a configuration.
 
