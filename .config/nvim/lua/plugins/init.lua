@@ -208,18 +208,18 @@ return {
       "rcarriga/nvim-dap-ui",
     },
   },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "mfussenegger/nvim-dap",
-    },
-    opts = {
-      handlers = {},
-      ensure_installed = { "codelldb" },
-    },
-  },
+  -- { -- Ломает команду :MasonInstallAll,
+  --   "jay-babu/mason-nvim-dap.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --     "mfussenegger/nvim-dap",
+  --   },
+  --   opts = {
+  --     handlers = {},
+  --     ensure_installed = { "codelldb" },
+  --   },
+  -- },
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",

@@ -10,6 +10,7 @@ PACKAGES+=(
     thefuck
     alacritty
     lazygit
+    firefox
 
     # Программы для общения
     telegram-desktop

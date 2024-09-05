@@ -7,6 +7,7 @@ return {
     "prettier",
     "emmet-language-server",
     "bash-language-server",
+    "beautysh",
     "typescript-language-server", -- JavaScript
     -- Python
     "pyright",

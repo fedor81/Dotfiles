@@ -20,4 +20,4 @@ run() {
     source $SCRIPT_DIR/install_packages.sh
 }
 
-run
+run $@
