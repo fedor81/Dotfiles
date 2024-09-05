@@ -1,16 +1,18 @@
 #!/bin/bash
 
 PACKAGES+=(
-    # Основные утилиты
     zsh
     git
     curl
+    npm
+
     neovim
     eza
     thefuck
     alacritty
     lazygit
     firefox
+    tmux
 
     # Программы для общения
     telegram-desktop
@@ -24,10 +26,10 @@ PACKAGES+=(
     # Для yazi
     yazi
     ffmpegthumbnailer
-    unarchiver
     jq
     poppler
     fd
+    imagemagick
 
     # Для быстрого поиска
     ripgrep

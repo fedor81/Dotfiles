@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then   # MacOS
     FULL_UPDATE="brew upgrade"
     PACKAGES+=(
         iterm2
+        sevenzip
     )
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ -f /etc/arch-release || -f /etc/manjaro-release ]]; then
@@ -19,6 +20,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         PACKAGES+=(
             timeshift
             ttf-jetbrains-mono-nerd
+            pipewire
+            p7zip
         )
 
         if [ "$INSTALL_HYPR" = true ]; then
