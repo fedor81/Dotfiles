@@ -2,7 +2,9 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", "<leader>n", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
+map("n", "<leader>nr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+
 map("i", "jj", "<ESC>")
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()

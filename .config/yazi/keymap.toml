@@ -1,0 +1,43 @@
+# Close input by once Esc press
+[[input.prepend_keymap]]
+on = "<Esc>"
+run = "close"
+desc = "Cancel input"
+
+# Smart enter: enter for directory, open for file
+[[manager.prepend_keymap]]
+on = "l"
+run = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# File navigation wraparound
+[[manager.prepend_keymap]]
+on = "k"
+run = "plugin --sync arrow --args=-1"
+
+[[manager.prepend_keymap]]
+on = "j"
+run = "plugin --sync arrow --args=1"
+
+# Smart paste: paste files without entering the directory
+[[manager.prepend_keymap]]
+on = "p"
+run = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+# Copy selected files to the system clipboard while yanking
+# Не работает на MacOS
+# [[manager.prepend_keymap]]
+# on = "y"
+# run = ['''
+# 	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
+# ''', "yank"]
+
+# Navigation in the parent directory without leaving the CWD
+# [[manager.prepend_keymap]]
+# on = "K"
+# run = "plugin --sync parent-arrow --args=-1"
+#
+# [[manager.prepend_keymap]]
+# on = "J"
+# run = "plugin --sync parent-arrow --args=1"
