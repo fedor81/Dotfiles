@@ -22,6 +22,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             ttf-jetbrains-mono-nerd
             pipewire
             p7zip
+            yay
         )
 
         if [ "$INSTALL_HYPR" = true ]; then

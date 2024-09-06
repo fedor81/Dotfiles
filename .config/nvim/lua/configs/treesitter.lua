@@ -1,4 +1,4 @@
-return{
+return {
   ensure_installed = {
     "vim",
     "lua",
@@ -10,5 +10,6 @@ return{
     "cpp",
     "rust",
     "toml",
+    "hyprlang",
   },
 }

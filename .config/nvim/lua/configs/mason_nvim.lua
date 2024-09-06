@@ -9,6 +9,7 @@ return {
     "bash-language-server",
     "beautysh",
     "typescript-language-server", -- JavaScript
+    "hyprls",
     -- Python
     "pyright",
     "mypy",

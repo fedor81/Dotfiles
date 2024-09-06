@@ -11,7 +11,12 @@ PACKAGES+=(
     thunar
     brightnessctl
     playerctl
-    hyprlock
-    hypridle
-    grim
+    hyprlock # lock
+    hypridle # Питание
+    grim # Скриншоты
+    udiskie # Автомонтирование устройств
+    blueberry # Для управление bluetooth
 )
+
+# Дополнительно руками
+# yay hyprshade
