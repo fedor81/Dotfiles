@@ -11,4 +11,7 @@ PACKAGES+=(
     thunar
     brightnessctl
     playerctl
+    hyprlock
+    hypridle
+    grim
 )
