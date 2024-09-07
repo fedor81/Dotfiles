@@ -18,6 +18,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         INSTALLER="sudo pacman -S --noconfirm"
         FULL_UPDATE="sudo pacman -Syu --noconfirm"
         PACKAGES+=(
+            gnome
             timeshift
             ttf-jetbrains-mono-nerd
             pipewire

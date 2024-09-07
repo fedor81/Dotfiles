@@ -2,7 +2,7 @@ PACKAGES+=(
     # hyprland и разное
     hyprland
     waybar
-    wofi
+    rofi
     dunst
     polkit-kde-agent
     qt5-wayland
