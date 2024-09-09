@@ -5,6 +5,8 @@ SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
 source $SCRIPT_DIR/source/main.sh $@
 
+exit 0
+
 print "Установка Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

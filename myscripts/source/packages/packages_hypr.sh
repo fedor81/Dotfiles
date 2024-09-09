@@ -16,6 +16,7 @@ PACKAGES+=(
     grim # Скриншоты
     udiskie # Автомонтирование устройств
     blueberry # Для управление bluetooth
+    hyprpaper
 )
 
 # Дополнительно руками
