@@ -13,9 +13,10 @@ local servers = {
   html = {},
   cssls = {},
   taplo = {},
-  tsserver = {},
+  ts_ls = {},
   bashls = {},
   hyprls = {},
+  csharp_ls = {},
 
   pyright = {
     settings = {

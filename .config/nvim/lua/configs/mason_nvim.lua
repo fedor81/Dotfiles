@@ -6,10 +6,14 @@ return {
     "css-lsp",
     "prettier",
     "emmet-language-server",
-    "bash-language-server",
-    "beautysh",
     "typescript-language-server", -- JavaScript
     "hyprls",
+    -- sh
+    "bash-language-server",
+    "beautysh",
+    -- C#
+    "csharp-language-server",
+    "csharpier",
     -- Python
     "pyright",
     "mypy",

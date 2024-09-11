@@ -18,10 +18,6 @@ return {
     opts = require "configs.treesitter",
   },
   {
-    "williamboman/mason.nvim",
-    opts = require "configs.mason_nvim",
-  },
-  {
     "mrcjkb/rustaceanvim",
     ft = { "rust" },
     version = "^4", -- Recommended
@@ -30,6 +26,13 @@ return {
       require "configs.rustaceanvim"
     end,
   },
+  -- { -- code-runner
+  --   "stevearc/overseer.nvim",
+  --   cmd = {
+  --     "OverseerRun",
+  --   },
+  --   opts = {},
+  -- },
   {
     "iabdelkareem/csharp.nvim",
     ft = { "cs" },

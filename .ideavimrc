@@ -16,11 +16,31 @@ set incsearch
 
 map Q @@
 
+" sync Vim clipboard with OS clipboard
+set clipboard^=unnamed,unnamedplus
+" jump between angle brackets
+set matchpairs+=<:>
+" highlight search results
+set hlsearch
+" remove search highlights
+nnoremap <Esc> :nohlsearch<cr>
+" case-insensitive search
+set ignorecase
+" enable case-sensitive search when uppercased letter is present
+set smartcase
+" search while typing
+set incsearch
+
 " Mappings
 map <leader>ds <Action>(Debug)
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>rn <Action>(RenameElement)
 map <leader>fm <Action>(ReformatCode)
+map <leader>x <Action>(CloseActiveTab)
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
+map <leader>dn <Action>(StepOver)
+map <leader>fw <Action>(SearchEverywhere)
 
 " Exit to normal mode with 'jj'
 inoremap jj <ESC>

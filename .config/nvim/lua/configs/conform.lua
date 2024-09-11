@@ -7,8 +7,9 @@ local options = {
     htmldjango = { "djlint" },
     python = { "black" },
     cpp = { "clang-format" },
-    sh = { "beautysh" }, -- Не работает
+    sh = { "beautysh" },
     rust = { "rustfmt" },
+    cs = { "csharpier" },
   },
 
   -- format_on_save = {

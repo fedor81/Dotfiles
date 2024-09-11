@@ -10,6 +10,7 @@ PACKAGES+=(
     eza
     thefuck
     alacritty
+    wezterm
     lazygit
     firefox
     tmux

@@ -14,4 +14,8 @@ M.ui = {
   },
 }
 
+M.mason = {
+  pkgs = require("configs.mason_nvim").ensure_installed,
+}
+
 return M

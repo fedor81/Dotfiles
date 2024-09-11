@@ -10,6 +10,10 @@ return {
     "cpp",
     "rust",
     "toml",
+    "bash",
+    "json",
     "hyprlang",
+    "markdown",
+    "c_sharp",
   },
 }
