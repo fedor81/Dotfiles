@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PACKAGES+=(
     # hyprland и разное
     hyprland
@@ -13,11 +15,10 @@ PACKAGES+=(
     playerctl
     hyprlock # lock
     hypridle # Питание
-    grim # Скриншоты
     udiskie # Автомонтирование устройств
     blueberry # Для управление bluetooth
     hyprpaper
 )
 
 # Дополнительно руками
-# yay hyprshade
+# yay hyprshade hyprshot
