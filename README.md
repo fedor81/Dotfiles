@@ -3,10 +3,11 @@
 ![Preview](.img/preview.png)
 
 ## Features
-- Neovim config
+- Neovim config(based on NvChad)
 - Tmux config
 - Zsh
 - Alacritty
+- Hyprland config
 
 ## Installation
 Install `zsh`. Then install `oh-my-zsh`
@@ -14,7 +15,7 @@ Install `zsh`. Then install `oh-my-zsh`
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
 
 You can install my configuration using the script `myscripts/install.sh`
-Installation is supported only on **arch** and **macOS**.
+Installation is supported only on **Arch** and **MacOS**.
 
 ```sh
 git clone https://github.com/fedor81/Dotfiles.git
@@ -22,7 +23,9 @@ chmod +x Dotfiles/myscripts/install.sh
 Dotfiles/myscripts/install.sh
 ```
 
-##### To update, use `myscripts/update.sh` 
+To Intall Hyprland, use `install.sh --hypr` on Arch
+
+##### To update, use `myscripts/update.sh`
 
 
 ### You can only install neovim config.

@@ -26,10 +26,15 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-return {
-  close_fold_kinds_for_ft = {
-    default = { "imports", "comment" },
+return { -- Folding
+  "kevinhwang91/nvim-ufo",
+  dependencies = { "kevinhwang91/promise-async" },
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    close_fold_kinds_for_ft = {
+      default = { "imports", "comment" },
+    },
+    open_fold_hl_timeout = 0,
+    fold_virt_text_handler = handler,
   },
-  open_fold_hl_timeout = 0,
-  fold_virt_text_handler = handler,
 }

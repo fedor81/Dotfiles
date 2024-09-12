@@ -18,4 +18,12 @@ M.mason = {
   pkgs = require("configs.mason_nvim").ensure_installed,
 }
 
+M.term = {
+  pos = "float",
+  float = {
+    width = 1.0,
+    height = 0.8,
+  },
+}
+
 return M

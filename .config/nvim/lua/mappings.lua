@@ -2,21 +2,26 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+-- Numbers
 map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
 map("n", "<leader>nr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
 
 map("i", "jj", "<ESC>")
+map("i", "zz", "<ESC>zza", { desc = "Center this line", noremap = true, silent = true })
+map("n", "x", '"_x', { noremap = true }) -- Удаление x не трогает буфер обмена
+
+-- Close buffers
 map("n", "<leader>cx", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Close All Buffers" })
-map("i", "zz", "<ESC>zza", { desc = "Center this line", silent = true })
+map({ "n", "t" }, "<leader>x", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer close" })
 
--- Убрать создание терминала из NvChad
-vim.keymap.del("n", "<leader>h")
-vim.keymap.del("n", "<leader>v")
-
--- Удаление x не трогает буфер обмена
-vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
+-- Disable mappings
+local nomap = vim.keymap.del
+nomap("n", "<leader>h")
+nomap("n", "<leader>v")
 
 -- Русская раскладка
 map("n", "ш", "i")
@@ -27,6 +32,15 @@ map("n", "д", "l")
 map("n", "ч", "x")
 map("n", "ц", "w")
 map("n", "и", "b")
+
+-- Runner
+local runner = require "configs.code_runner"
+map("n", "<leader>ru", function()
+  runner.run_code()
+end, { desc = "Run code", noremap = true, silent = true })
+map({ "n", "t" }, "<A-r>", function()
+  require("nvchad.term").toggle { pos = runner.pos, id = runner.id }
+end, { desc = "Terminal Toggle Runner term" })
 
 -- Emmet
 map({ "n", "v" }, "<leader>xe", function()
@@ -76,7 +90,6 @@ map("n", "<leader>ql", "<cmd>Trouble loclist toggle focus<cr>", { desc = "Locati
 map("n", "<leader>qq", "<cmd>Trouble qflist toggle focus<cr>", { desc = "Quickfix List Trouble" })
 
 -- UFO - folding
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 map("n", "zR", require("ufo").openAllFolds, { desc = "UFO open all folds" })
 map("n", "zM", require("ufo").closeAllFolds, { desc = "UFO close all folds" })
 
@@ -118,11 +131,6 @@ end, { desc = "Open NeoGit" })
 
 map("n", "<Leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview File History" })
 map("n", "<Leader>gv", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
-
--- Rust
-map("n", "<leader>rur", function()
-  vim.cmd.RustLsp "runnables"
-end, { desc = "RustLsp runnanles" })
 
 -- Важная настройка
 -- map("n", "<Left>", ":echo 'Use h'<CR>")
