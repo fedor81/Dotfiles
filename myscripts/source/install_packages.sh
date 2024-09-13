@@ -29,6 +29,5 @@ fi
 print "Установка пакетов"
 for PACKAGE in "${PACKAGES[@]}"
 do
-    echo $PACKAGE
-    # $INSTALLER $PACKAGE
+    $INSTALLER $PACKAGE
 done
