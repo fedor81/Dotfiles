@@ -13,6 +13,7 @@ return {
       sh = { "beautysh" },
       rust = { "rustfmt" },
       cs = { "csharpier" },
+      markdown = { "prettier" },
     },
 
     -- format_on_save = {

@@ -34,7 +34,7 @@ map("n", "ц", "w")
 map("n", "и", "b")
 
 -- Runner
-local runner = require "configs.code_runner"
+local runner = require "code_runner.code_runner"
 map("n", "<leader>ru", function()
   runner.run_code()
 end, { desc = "Run code", noremap = true, silent = true })
