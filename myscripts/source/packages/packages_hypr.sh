@@ -18,6 +18,7 @@ PACKAGES+=(
     udiskie # Автомонтирование устройств
     blueberry # Для управление bluetooth
     hyprpaper
+    acpi # Заряд батареи
 )
 
 # Дополнительно руками
