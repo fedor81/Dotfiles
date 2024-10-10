@@ -17,6 +17,7 @@ local servers = {
   bashls = {},
   hyprls = {},
   csharp_ls = {},
+  jsonls = {},
 
   pyright = {
     settings = {

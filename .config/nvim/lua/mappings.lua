@@ -132,6 +132,8 @@ end, { desc = "Open NeoGit" })
 map("n", "<Leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Diffview File History" })
 map("n", "<Leader>gv", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
 
+map("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it rain" })
+
 -- Важная настройка
 -- map("n", "<Left>", ":echo 'Use h'<CR>")
 -- map("n", "<Right>", ":echo 'Use l'<CR>")

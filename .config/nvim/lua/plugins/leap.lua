@@ -1,6 +1,6 @@
 return { -- Быстрое перемещение
   "ggandor/leap.nvim",
-  enabled = false,
+  enabled = true,
   keys = {
     { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
     { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },

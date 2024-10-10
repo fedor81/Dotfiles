@@ -8,6 +8,7 @@ return {
     "emmet-language-server",
     "typescript-language-server", -- JavaScript
     "hyprls",
+    "json-lsp",
     -- sh
     "bash-language-server",
     "beautysh",
