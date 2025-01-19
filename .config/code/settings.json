@@ -35,7 +35,6 @@
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.useSystemClipboard": true,
-  "vim.leader": "<space>",
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "j"],
@@ -45,6 +44,12 @@
   "vim.handleKeys": {
     "<C-f>": false
   },
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    }
+  ],
   // To improve performance
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1,
@@ -70,7 +75,48 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "workbench.colorTheme": "Palenight (Mild Contrast)",
   "files.trimFinalNewlines": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "mssql.connections": [
+    {
+      "server": "localhost",
+      "database": "master",
+      "authenticationType": "SqlLogin",
+      "user": "sa",
+      "password": "",
+      "emptyPasswordInput": false,
+      "savePassword": true,
+      "encrypt": "Mandatory",
+      "trustServerCertificate": true,
+      "connectTimeout": 15,
+      "commandTimeout": 30,
+      "applicationName": "vscode-mssql",
+      "displayName": "localhost, master (sa)"
+    }
+  ],
+  "editor.rulers": [100],
+  "omnisharp.organizeImportsOnFormat": true,
+  "explorer.autoReveal": "focusNoScroll",
+  "cSpell.languageSettings": [],
+  "cSpell.ignoreWords": ["Полагаю"],
+  "cSpell.language": "en,ru",
+  "mssql.enableRichExperiences": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "jupyter.askForKernelRestart": false,
+  "codeium.enableConfig": {
+    "*": true,
+    "asm": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nasm]": {},
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "editor.cursorSmoothCaretAnimation": "on",
+  "vscode_custom_css.imports": [
+    "file:///Users/komputer/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
+  "workbench.colorTheme": "Palenight Theme"
 }

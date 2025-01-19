@@ -33,95 +33,12 @@
 
   // Search
   {
-    "key": "space f b",
-    "command": "workbench.action.showAllEditors",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  },
-  {
     "key": "space space",
-    "command": "workbench.action.quickOpen",
+    "command": "workbench.action.quickOpenWithModes",
     "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  },
-  {
-    "key": "space f w",
-    "command": "workbench.action.findInFiles",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  },
-
-  // Debug
-  {
-    "key": "space d b",
-    "command": "editor.debug.action.toggleBreakpoint",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space d s",
-    "command": "workbench.action.debug.start",
-    "when": "vim.mode == 'Normal' && editorTextFocus && !inDebugMode"
-  },
-  {
-    "key": "space d s",
-    "command": "workbench.action.debug.continue",
-    "when": "vim.mode == 'Normal' && editorTextFocus && inDebugMode"
-  },
-
-  // Coding
-  {
-    "key": "space c a",
-    "command": "editor.action.quickFix",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space r n",
-    "command": "editor.action.rename",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space c s",
-    "command": "workbench.action.gotoSymbol",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space x",
-    "command": "workbench.action.closeActiveEditor",
-    "when": "vim.mode == 'Normal'"
-  },
-  {
-    "key": "space g d",
-    "command": "editor.action.revealDefinition",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space g r",
-    "command": "editor.action.goToReferences",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "space g g",
-    "command": "runCommands",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)",
-    "args": {
-      "commands": ["workbench.view.scm", "workbench.scm.focus"]
-    }
   },
 
   // File Explorer
-  {
-    "key": "space e",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "workbench.action.toggleSidebarVisibility",
-        "workbench.files.action.focusFilesExplorer"
-      ]
-    },
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
-  },
-  {
-    "key": "ctrl-n",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
   {
     "key": "r",
     "command": "renameFile",
@@ -153,23 +70,6 @@
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
-    "key": "s",
-    "command": "explorer.openToSide",
-    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  {
-    "key": "shift-s",
-    "command": "runCommands",
-    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus",
-    "args": {
-      "commands": [
-        "workbench.action.splitEditorDown",
-        "explorer.openAndPassFocus",
-        "workbench.action.closeOtherEditors"
-      ]
-    }
-  },
-  {
     "key": "enter",
     "command": "explorer.openAndPassFocus",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceIsFolder && !inputFocus"
@@ -179,8 +79,4 @@
     "command": "list.toggleExpand",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && explorerResourceIsFolder && !inputFocus"
   },
-  {
-    "key": "shift+enter",
-    "command": "nand2tetris.run"
-  }
 ]

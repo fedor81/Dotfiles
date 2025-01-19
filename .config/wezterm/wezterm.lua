@@ -16,12 +16,12 @@ return {
 	-- window_background_opacity = 0.20,
 	window_decorations = "RESIZE",
 
-	default_prog = {
-		"/bin/zsh",
-		"-l",
-		"-c",
-		"tmux attach -t main || tmux new -s main",
-	},
+	-- default_prog = {
+	-- 	"/bin/zsh",
+	-- 	"-l",
+	-- 	"-c",
+	-- 	"tmux attach -t main || tmux new -s main",
+	-- },
 	mouse_bindings = {
 		-- Ctrl-click will open the link under the mouse cursor
 		{

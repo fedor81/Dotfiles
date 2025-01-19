@@ -20,10 +20,10 @@ on = "j"
 run = "plugin --sync arrow --args=1"
 
 # Smart paste: paste files without entering the directory
-[[manager.prepend_keymap]]
-on = "p"
-run = "plugin --sync smart-paste"
-desc = "Paste into the hovered directory or CWD"
+# [[manager.prepend_keymap]]
+# on = "p"
+# run = "plugin --sync smart-paste"
+# desc = "Paste into the hovered directory or CWD"
 
 # Copy selected files to the system clipboard while yanking
 # Не работает на MacOS
