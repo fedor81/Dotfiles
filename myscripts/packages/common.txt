@@ -1,0 +1,37 @@
+zsh
+zsh-vi-mode
+git
+curl
+npm
+
+neovim
+eza
+thefuck
+alacritty
+wezterm
+lazygit
+firefox
+tmux
+
+# Программы для общения
+telegram-desktop
+discord
+
+# Утилиты
+atuin # Просмотр истории
+
+# Для yazi
+yazi
+ffmpegthumbnailer
+jq
+poppler
+fd
+imagemagick
+
+# Для быстрого поиска
+ripgrep
+fzf
+zoxide
+
+# Для rustaceanvim
+graphviz
