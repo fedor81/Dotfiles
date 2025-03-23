@@ -96,7 +96,6 @@ source $ZSH/oh-my-zsh.sh
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Aliases
-alias ya="yazi"
 alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissions"
 
 # Просмотр в терминале yazi

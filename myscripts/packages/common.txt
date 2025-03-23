@@ -1,9 +1,7 @@
 zsh
-zsh-vi-mode
-git
-curl
+zsh-autosuggestions
+zsh-completions
 npm
-
 neovim
 eza
 thefuck
@@ -12,26 +10,14 @@ wezterm
 lazygit
 firefox
 tmux
-
-# Программы для общения
 telegram-desktop
-discord
-
-# Утилиты
-atuin # Просмотр истории
-
-# Для yazi
+obsidian
+atuin
 yazi
 ffmpegthumbnailer
 jq
 poppler
 fd
-imagemagick
-
-# Для быстрого поиска
 ripgrep
 fzf
 zoxide
-
-# Для rustaceanvim
-graphviz
