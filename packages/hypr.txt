@@ -1,0 +1,17 @@
+hyprland
+waybar
+rofi
+dunst
+polkit-kde-agent
+qt5-wayland
+qt6-wayland
+cliphist
+thunar
+brightnessctl
+playerctl
+hyprlock
+hypridle
+udiskie
+blueberry
+hyprpaper
+acpi

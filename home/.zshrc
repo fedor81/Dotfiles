@@ -1,12 +1,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="/usr/local/opt/dotnet@6/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="random"
-# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -96,8 +97,13 @@ source $ZSH/oh-my-zsh.sh
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Aliases
-alias ya="yazi"
 alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissions"
+
+eval "$(zoxide init zsh)" # Вместо cd - Zoxide
+eval $(thefuck --alias) # Исправление неправильно написанных команд - fuck
+eval "$(atuin init zsh)" # Поиск по истории atuin
+
+n() { nvim "$@" && clear }
 
 # Просмотр в терминале yazi
 function yy() {
@@ -108,12 +114,6 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
-
-eval "$(zoxide init zsh)" # Вместо cd - Zoxide
-eval $(thefuck --alias) # Исправление неправильно написанных команд - fuck
-eval "$(atuin init zsh)" # Поиск по истории atuin
-
-n() { nvim "$@" && clear }
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -135,6 +135,4 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
 ### End of Zinit's installer chunk
-export PATH="/usr/local/opt/dotnet@6/bin:$PATH"
