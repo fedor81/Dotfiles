@@ -1,5 +1,4 @@
 iterm2
 sevenzip
-zsh-vi-mode
 font-jetbrains-mono-nerd-font
 visual-studio-code

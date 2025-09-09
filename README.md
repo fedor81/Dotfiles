@@ -59,3 +59,11 @@ rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
 ```
+
+### NixOS
+
+Create symlink:
+
+```sh
+sudo ln -sf $(pwd)/nixos/configuration.nix /etc/nixos/configuration.nix
+```
