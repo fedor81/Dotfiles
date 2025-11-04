@@ -1,7 +1,3 @@
-######################################################################
-########################### .gitignore ################################
-######################################################################
-
 # Node artifact files
 node_modules/
 dist/
@@ -51,6 +47,25 @@ Thumbs.db
 venv/
 
 
+##########################################
+############### VS CODE ##################
+##########################################
+
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+
 ######################################################################
 ########################### Neovim ###################################
 ######################################################################
@@ -59,6 +74,22 @@ venv/
 # Ignore Neovim lazy loader lock file
 .config/nvim/lazy-lock.json
 .nvim_code_runner.sh
+
+
+######################################################################
+########################## Neural networks ###########################
+######################################################################
+
+
+.qodo/
+.trunk/
+
+
+##########################################
+################## GO ####################
+##########################################
+
+.air.toml
 
 
 ######################################################################
@@ -97,13 +128,11 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -257,14 +286,6 @@ cython_debug/
 *.user
 *.sln.docstates
 
-# Build results
-
-[Dd]ebug/
-[Rr]elease/
-x64/
-[Bb]in/
-[Oo]bj/
-
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -374,22 +395,3 @@ Desktop.ini
 $RECYCLE.BIN/
 
 _NCrunch*
-
-
-##########################################
-############### VS CODE ##################
-##########################################
-
-
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix

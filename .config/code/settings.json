@@ -54,6 +54,9 @@
   },
   "terminal.integrated.shellIntegration.decorationsEnabled": "gutter", // В терминале тоже
 
+  // Иконки
+  "workbench.iconTheme": "vscode-icons",
+
   // Полный путь к файлу сверху
   "breadcrumbs.enabled": false,
 
@@ -95,7 +98,7 @@
 
   // Python
   "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.createEnvironment.trigger": "off",
   "python.analysis.exclude": [
@@ -104,95 +107,155 @@
     "**/.venv",
     "**/tests",
     "**/dist"
-  ], // Игнорирование ненужных файлов
+  ],
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.analysis.diagnosticsSource": "Pyright",
 
-  // Прочее
-  "settingsSync.ignoredExtensions": [],
-  "security.workspace.trust.untrustedFiles": "open",
-  "git.openRepositoryInParentFolders": "always",
-  "vsicons.dontShowNewVersionMessage": true,
-  "workbench.editorAssociations": {
-    "*.csproj": "default"
-  },
-  "editor.linkedEditing": true,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "liveServer.settings.donotShowInfoMsg": true,
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "files.trimFinalNewlines": true,
-  "git.confirmSync": false,
-  "editor.rulers": [100],
-  "cSpell.languageSettings": [],
-  "cSpell.language": "en,ru",
-  "mssql.enableRichExperiences": true,
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "jupyter.askForKernelRestart": false,
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[nasm]": {},
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
-  "vscode_custom_css.imports": [
-    "file:///Users/komputer/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
-  ],
-  "workbench.colorTheme": "Quiet Light",
-  "dotnet.formatting.organizeImportsOnFormat": true,
-  "git.autofetch": true,
-  "git.suggestSmartCommit": false,
-  "black-formatter.args": ["--line-length", "100"],
-  "explorer.fileNesting.patterns": {
-    "*.ts": "${capture}.js",
-    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "*.jsx": "${capture}.js",
-    "*.tsx": "${capture}.ts",
-    "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
-    "Cargo.toml": "Cargo.lock",
-    "*.sqlite": "${capture}.${extname}-*",
-    "*.db": "${capture}.${extname}-*",
-    "*.sqlite3": "${capture}.${extname}-*",
-    "*.db3": "${capture}.${extname}-*",
-    "*.sdb": "${capture}.${extname}-*",
-    "*.s3db": "${capture}.${extname}-*"
-  },
-  "makefile.configureOnOpen": true,
-  "[django-html]": {
-    "editor.defaultFormatter": "monosans.djlint"
-  },
-  "editor.largeFileOptimizations": false,
-  "code-runner.saveFileBeforeRun": true,
-  "code-runner.customCommand": "",
-  "extensions.ignoreRecommendations": true,
-  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-  "errorLens.delay": 1,
-  "workbench.iconTheme": "vscode-icons",
-  "cSpell.userWords": ["elif"],
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  "lldb.suppressUpdateNotifications": true,
-  "workbench.preferredLightColorTheme": "Quiet Light",
-  "window.autoDetectColorScheme": false,
-  "explorer.confirmPasteNative": false,
-  "workbench.editor.empty.hint": "hidden",
-  "workbench.preferredDarkColorTheme": "Palenight (Mild Contrast)",
+  // Background
+  //   "background.enabled": false,
+  //   "background.fullscreen": {
+  //     "opacity": 0.1,
+  //     "images": [
+  //     ],
+  //     "interval": 3600,
+  //     "random": true
+  //   },
+  //   "background.panel": {
+  //     "opacity": 0.1,
+  //     "size": "15% auto",
+  //     "position": "100% 100%",
+  //     "images": [],
+  //     "interval": 1800,
+  //     "random": true
+  //   },
+  //   "background.sidebar": {
+  //     "images": [],
+  //     "opacity": 0.1,
+  //     "size": "cover",
+  //     "position": "left",
+  //     "interval": 1800,
+  //     "random": true
+  //   },
 
-  "editor.unicodeHighlight.allowedLocales": {
-    "ru": true
-  },
+  // commit-message-editor
+  "commit-message-editor.view.defaultView": "form",
+  "commit-message-editor.view.saveAndClose": true,
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "commit-message-editor.staticTemplate": [
+    "feat: Short description",
+    "",
+    "Message body",
+    "",
+    "Message footer"
+  ],
+  "commit-message-editor.dynamicTemplate": [
+    "{type}{scope}: {description}",
+    "",
+    "{body}",
+    "",
+    "{breaking_change}{footer}"
+  ],
+  "commit-message-editor.tokens": [
+    {
+      "label": "Type",
+      "name": "type",
+      "type": "enum",
+      "description": "Type of changes",
+      "options": [
+        {
+          "label": "---",
+          "value": ""
+        },
+        {
+          "label": "build",
+          "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)"
+        },
+        {
+          "label": "chore",
+          "description": "Updating grunt tasks etc; no production code change"
+        },
+        {
+          "label": "ci",
+          "description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)"
+        },
+        {
+          "label": "docs",
+          "description": "Documentation only changes"
+        },
+        {
+          "label": "feat",
+          "description": "A new feature"
+        },
+        {
+          "label": "fix",
+          "description": "A bug fix"
+        },
+        {
+          "label": "perf",
+          "description": "A code change that improves performance"
+        },
+        {
+          "label": "refactor",
+          "description": "A code change that neither fixes a bug nor adds a feature"
+        },
+        {
+          "label": "revert"
+        },
+        {
+          "label": "style",
+          "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+        },
+        {
+          "label": "test",
+          "description": "Adding missing tests or correcting existing tests"
+        },
+        {
+          "label": "WIP",
+          "value": "WIP",
+          "description": "Work in progress"
+        }
+      ]
+    },
+    {
+      "label": "Scope",
+      "name": "scope",
+      "description": "A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., \"feat(parser): add ability to parse arrays\".",
+      "type": "text",
+      "multiline": false,
+      "prefix": "(",
+      "suffix": ")"
+    },
+    {
+      "label": "Short description",
+      "name": "description",
+      "description": "Short description in the subject line.",
+      "type": "text",
+      "multiline": false
+    },
+    {
+      "label": "Body",
+      "name": "body",
+      "description": "Optional body",
+      "type": "text",
+      "multiline": true,
+      "lines": 5,
+      "maxLines": 10
+    },
+    {
+      "label": "Breaking change",
+      "name": "breaking_change",
+      "type": "boolean",
+      "value": "BREAKING CHANGE: ",
+      "default": false
+    },
+    {
+      "label": "Footer",
+      "name": "footer",
+      "description": "Optional footer",
+      "type": "text",
+      "multiline": true
+    }
+  ],
 
   // Русификация vsvim
   "vim.normalModeKeyBindings": [
@@ -459,9 +522,158 @@
     { "before": ["Б"], "after": ["<"] },
     { "before": ["Ю"], "after": [">"] }
   ],
+
+  // Прочее
+  "settingsSync.ignoredExtensions": [],
+  "security.workspace.trust.untrustedFiles": "open",
+  "git.openRepositoryInParentFolders": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.editorAssociations": {
+    "*.csproj": "default",
+    "git-rebase-todo": "gitlens.rebase",
+    "file:/**/*.parquet": "jupyter-data-wrangler"
+  },
+  "editor.linkedEditing": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.trimFinalNewlines": true,
+  "git.confirmSync": false,
+  "editor.rulers": [100],
+  "cSpell.languageSettings": [],
+  "cSpell.language": "en,ru",
+  "mssql.enableRichExperiences": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "jupyter.askForKernelRestart": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nasm]": {},
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "vscode_custom_css.imports": [
+    "file:///Users/komputer/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
+  "workbench.colorTheme": "Quiet Light",
+  "dotnet.formatting.organizeImportsOnFormat": true,
+  "git.autofetch": true,
+  "git.suggestSmartCommit": false,
+  "black-formatter.args": ["--line-length", "100"],
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "Cargo.toml": "Cargo.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "makefile.configureOnOpen": true,
+  "[django-html]": {
+    "editor.defaultFormatter": "monosans.djlint"
+  },
+  "editor.largeFileOptimizations": false,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.customCommand": "",
+  "extensions.ignoreRecommendations": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.delay": 1,
+  "cSpell.userWords": ["elif"],
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "lldb.suppressUpdateNotifications": true,
+  "workbench.preferredLightColorTheme": "Quiet Light",
+  "window.autoDetectColorScheme": false,
+  "explorer.confirmPasteNative": false,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.preferredDarkColorTheme": "Palenight (Mild Contrast)",
+  "editor.unicodeHighlight.allowedLocales": {
+    "ru": true
+  },
   "notebook.output.scrolling": true,
   "editor.defaultFormatter": "charliermarsh.ruff",
   "python.analysis.languageServerMode": "full",
-"python.languageServer": "Pylance",
-"codesnap.containerPadding": "1em"
+  "python.languageServer": "Pylance",
+  "codesnap.containerPadding": "1em",
+  "gitlens.ai.model": "gitkraken",
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "animations.Enabled": true,
+  "conventionalCommits.showNewVersionNotes": false,
+  "[proto3]": {
+    "editor.defaultFormatter": "zxh404.vscode-proto3"
+  },
+  "files.exclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true
+  },
+  "files.watcherExclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "file",
+  "C_Cpp.default.cppStandard": "c++20",
+
+  "protoc": {
+    "options": ["--proto_path=${workspaceRoot}/bin"]
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "redhat.telemetry.enabled": false,
+  "excalidraw.theme": "auto",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools"
+  },
+  "terminal.integrated.stickyScroll.enabled": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "go.testTags": "integration"
 }

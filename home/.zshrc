@@ -1,7 +1,9 @@
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="/usr/local/opt/dotnet@6/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@17/bin:$PATH"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -61,6 +63,9 @@ zstyle ':omz:update' frequency 13
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -74,11 +79,27 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Aliases
 alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissions"
+alias cd="z"
 
 eval "$(zoxide init zsh)" # Вместо cd - Zoxide
 eval $(thefuck --alias) # Исправление неправильно написанных команд - fuck
@@ -88,9 +109,16 @@ n() { nvim "$@" && clear }
 
 # Просмотр в терминале yazi
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
 	rm -f -- "$tmp"
 }
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/komputer/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
