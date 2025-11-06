@@ -10,6 +10,7 @@
     wezterm
     alacritty
     vscode
+    obsidian
 
     # important
     vim
@@ -50,6 +51,21 @@
     hunspell
     hunspellDicts.ru_RU
     hunspellDicts.en_US
+
+    # Rust
+    rustc
+    cargo
+    rustfmt
+    clippy
+    rust-analyzer
+
+    gcc
+    clang
+
+    # Python
+    uv
+    python3Full
+    jupyter-all
   ];
 
   fonts.packages = with pkgs; [
