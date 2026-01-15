@@ -31,33 +31,71 @@ in
     dates = "weekly";
   };
 
-  # Automatic cleanup
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  nix = {
+    # Nix garbage collection and settings (consolidated)
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    settings = {
+      max-jobs = "auto";
+      cores = 0;
+      auto-optimise-store = true; # Optimise the store every build, this may slow down builds
+    };
   };
-  nix.settings.auto-optimise-store = true; # Optimise the store every build, this may slow down builds
+
+  nix.settings.experimental-features = "nix-command flakes";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        22
+        80
+        443
+      ];
+      allowedTCPPortRanges = [
+        {
+          # KDE Connect
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          # KDE Connect
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
+  };
 
   time.timeZone = "Asia/Yekaterinburg";
 
-  i18n.extraLocaleSettings = {
-    LC_ALL = "en_US.UTF-8";
+  i18n = {
+    extraLocaleSettings = {
+      LC_ALL = "en_US.UTF-8";
+    };
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ru_RU.UTF-8/UTF-8"
+    ];
+    defaultLocale = "en_US.UTF-8";
   };
-  i18n.supportedLocales = [
-    # BEWARE: requires a different format with the added /UTF-8
-    "en_US.UTF-8/UTF-8"
-    "ru_RU.UTF-8/UTF-8"
-  ];
 
+  programs.kdeconnect.enable = true;
   programs.zsh.enable = true;
+
   users = {
     users.lary = {
       shell = pkgs.zsh;

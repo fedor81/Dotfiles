@@ -18,8 +18,6 @@
     thefuck
     atuin
     eza
-    yazi
-    neovim
   ];
 
   programs.zsh = {

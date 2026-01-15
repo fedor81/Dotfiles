@@ -20,23 +20,15 @@
     nixfmt-rfc-style # .nix formatter
     shfmt # shell formatter
 
-    # CLI
-    zsh
-    oh-my-zsh
-    zsh-autosuggestions
-    zsh-completions
-    eza
-    bat
-    atuin
-    thefuck
+    # CLI (user-level tools managed by home-manager)
     yazi
+    bat
     ffmpegthumbnailer
     jq
     poppler
     fd
     ripgrep
     fzf
-    zoxide
 
     # VPN - Core
     xray
