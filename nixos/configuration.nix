@@ -2,18 +2,22 @@
   config,
   lib,
   pkgs,
+  homeManager,
+  diskoInput,
   ...
 }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+  # Flake inputs (required) — we use them directly (flakes-only)
+  homeManagerPath = homeManager;
+  disko = diskoInput;
 in
 {
   imports = [
-    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-    (import "${home-manager}/nixos")
+    "${disko}/module.nix"
+    (import "${homeManagerPath}/nixos")
 
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ./disk-config.nix
     ./packages.nix
     ./services.nix
