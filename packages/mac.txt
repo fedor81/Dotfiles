@@ -1,4 +1,0 @@
-iterm2
-sevenzip
-font-jetbrains-mono-nerd-font
-visual-studio-code

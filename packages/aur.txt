@@ -1,2 +1,0 @@
-visual-studio-code-bin
-ttf-ms-win10-auto

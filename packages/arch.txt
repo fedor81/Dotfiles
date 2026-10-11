@@ -1,4 +1,0 @@
-timeshift
-libreoffice-still
-ttf-jetbrains-mono-nerd
-p7zip

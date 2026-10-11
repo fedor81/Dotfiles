@@ -1,20 +1,20 @@
+# zmodload zsh/zprof
+
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/dotnet@6/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@17/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
+export GOMAXPROCS=2
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
+ZSH_THEME="robbyrussell"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
@@ -26,7 +26,7 @@ ZSH_THEME="random"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -72,9 +72,9 @@ zstyle ':omz:update' frequency 13
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    zsh-autosuggestions
-    zsh-completions
+	git
+	zsh-autosuggestions
+	zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -89,23 +89,18 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Aliases
 alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
+alias grep="rg"
+alias find="fd"
 
 eval "$(zoxide init zsh)" # Вместо cd - Zoxide
-eval $(thefuck --alias) # Исправление неправильно написанных команд - fuck
-eval "$(atuin init zsh)" # Поиск по истории atuin
-
-n() { nvim "$@" && clear }
+eval $(thefuck --alias)   # Исправление неправильно написанных команд - fuck
+eval "$(atuin init zsh)"  # Поиск по истории atuin
 
 # Просмотр в терминале yazi
 function yy() {
@@ -117,8 +112,4 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/komputer/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+# zprof

@@ -2,4 +2,4 @@
 show_hidden = true
 
 [opener]
-edit = [{ run = 'nvim "$@"', block = true, orphan = true }]
+edit = [{ run = "nvim %s", block = true, for = "unix" }]
